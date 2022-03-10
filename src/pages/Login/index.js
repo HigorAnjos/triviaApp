@@ -18,7 +18,7 @@ class Login extends Component {
   render() {
     const { gravatarEmail, name } = this.state;
     const isDisabledButton = !(gravatarEmail.length && name.length);
-    const { dispatchSetUser } = this.props;
+    const { dispatchSetUser, history } = this.props;
 
     return (
       <main>
@@ -44,7 +44,10 @@ class Login extends Component {
           <button
             type="button"
             disabled={ isDisabledButton }
-            onClick={ () => dispatchSetUser(this.state) }
+            onClick={ () => {
+              dispatchSetUser(this.state);
+              history.push('/trivia');
+            } }
             data-testid="btn-play"
           >
             JOGAR!
@@ -57,6 +60,7 @@ class Login extends Component {
 
 Login.propTypes = {
   dispatchSetUser: propTypes.func.isRequired,
+  history: propTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
