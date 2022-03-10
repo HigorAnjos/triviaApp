@@ -27,7 +27,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   name: PropTypes.string.isRequired,
-  score: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
   gravatarEmail: PropTypes.string.isRequired,
 };
 
