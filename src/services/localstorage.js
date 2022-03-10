@@ -11,6 +11,6 @@ export const saveRanking = ({ gravatarEmail, name, score }) => {
   ]));
 };
 
-export const getToken = () => JSON.parse(localStorage.getItem('token'));
+export const getToken = () => localStorage.getItem('token');
 
 export const setToken = (token) => localStorage.setItem('token', token);
