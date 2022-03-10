@@ -36,7 +36,7 @@ const startFetchingToken = () => ({
   type: TOKEN_FETCHING,
 });
 
-const successFetchingToken = (token) => ({
+export const successFetchingToken = (token) => ({
   type: TOKEN_SUCCESS,
   payload: token,
 });
