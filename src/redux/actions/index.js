@@ -1,9 +1,11 @@
 import fetchAPI from '../../services/trivia';
 
 // ACTIONS TYPES
+
 export const SET_USER = 'SET_USER';
-export const SET_ASSERTIONS = 'SET_ASSERTIONS';
 export const SET_SCORE = 'SET_SCORE';
+export const RESET_GAME = 'RESET_GAME';
+const DEFAULT_SCORE = 10;
 
 export const TOKEN_FETCHING = 'TOKEN_FETCHING';
 export const TOKEN_SUCCESS = 'TOKEN_SUCCESS';
@@ -21,8 +23,13 @@ export const setUser = (user) => ({
   payload: user,
 });
 
-export const setAssertions = () => ({
-  type: SET_ASSERTIONS,
+export const setScore = (timer, difficulty) => ({
+  type: SET_SCORE,
+  payload: DEFAULT_SCORE + timer * difficulty,
+});
+
+export const resetGame = () => ({
+  type: RESET_GAME,
 });
 
 const startFetchingToken = () => ({
