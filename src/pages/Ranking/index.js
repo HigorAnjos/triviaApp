@@ -29,8 +29,8 @@ export class Ranking extends Component {
         return ONE;
       }
       if (a.score > b.score) {
-        const ONELESS = -1;
-        return ONELESS;
+        const ONE_LESS = -1;
+        return ONE_LESS;
       }
       return 0;
     });
