@@ -1,5 +1,5 @@
+import { setToken } from '../../services/localstorage';
 import fetchAPI from '../../services/trivia';
-
 // ACTIONS TYPES
 
 export const SET_USER = 'SET_USER';
@@ -7,10 +7,8 @@ export const SET_SCORE = 'SET_SCORE';
 export const RESET_GAME = 'RESET_GAME';
 const DEFAULT_SCORE = 10;
 
-export const TOKEN_FETCHING = 'TOKEN_FETCHING';
 export const TOKEN_SUCCESS = 'TOKEN_SUCCESS';
 // Salve no LocalStorage o token recebido utilizando a chave token
-export const TOKEN_ERROR = 'TOKEN_ERROR';
 
 export const TRIVIA_FETCHING = 'TRIVIA_FETCHING';
 export const TRIVIA_SUCCESS = 'TRIVIA_SUCCESS';
@@ -32,27 +30,18 @@ export const resetGame = () => ({
   type: RESET_GAME,
 });
 
-const startFetchingToken = () => ({
-  type: TOKEN_FETCHING,
-});
-
 const successFetchingToken = (token) => ({
   type: TOKEN_SUCCESS,
   payload: token,
 });
 
-const errorFetchingToken = (error) => ({
-  type: TOKEN_ERROR,
-  payload: error,
-});
-
 export const fetchToken = () => async (dispatch) => {
-  dispatch(startFetchingToken());
   try {
     const { token } = await fetchAPI('https://opentdb.com/api_token.php?command=request');
+    setToken(token);
     dispatch(successFetchingToken(token));
   } catch (error) {
-    dispatch(errorFetchingToken(error));
+    console.log(error);
   }
 };
 
