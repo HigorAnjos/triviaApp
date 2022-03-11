@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 class FeedBack extends React.Component {
   feedback = () => {
     const { assertions } = this.props;
-    const THREEASSERTIONS = 3;
+    const THREE_ASSERTIONS = 3;
 
-    if (assertions < THREEASSERTIONS) {
+    if (assertions < THREE_ASSERTIONS) {
       return (<h1 data-testid="feedback-text">Could be better...</h1>);
     }
     return (<h1 data-testid="feedback-text">Well Done!</h1>);
