@@ -47,8 +47,7 @@ class Login extends Component {
             disabled={ isDisabledButton }
             onClick={ () => {
               dispatchSetUser(this.state);
-              dispatchFetchToken();
-              history.push('/trivia');
+              dispatchFetchToken().then(() => history.push('/trivia'));
             } }
             data-testid="btn-play"
           >

@@ -1,59 +1,69 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getToken, setToken } from '../../services/localstorage';
 
 import Header from '../../components/Header';
-import { fetchToken, successFetchingToken } from '../../redux/actions';
+import { fetchToken, fetchTrivia } from '../../redux/actions';
 import Question from '../../components/Question';
 
 export class Trivia extends Component {
-  componentDidMount() {
-    const { dispatchSetToken, dispatchFetchToken } = this.props;
-    const token = getToken();
-    if (!token) {
-      dispatchFetchToken();
-    } else {
-      dispatchSetToken(token);
-    }
+  state = {
+    questionIndex: 0,
   }
 
-  componentDidUpdate() {
-    const { token } = this.props;
-    if (token !== getToken()) {
-      setToken(token);
+  componentDidMount() {
+    const { dispatchFetchTrivia } = this.props;
+    dispatchFetchTrivia(token);
+  }
+
+  componentDidUpdate({ token: prevToken }) {
+    const { responseCode, token, dispatchFetchToken, dispatchFetchTrivia } = this.props;
+    if (responseCode && token === prevToken) {
+      dispatchFetchToken();
+    } else if (token !== prevToken) {
+      dispatchFetchTrivia(token);
     }
   }
 
   render() {
-    const { token } = this.props;
+    const { questions } = this.props;
+    const { questionIndex } = this.state;
+    const isLoading = questions.length === 0;
 
     return (
       <div>
         <Header />
-        <Question token={ token } />
+
+        {isLoading
+          ? (
+            <main>
+              Carregando...
+            </main>
+          ) : (
+            <Question question={ questions[questionIndex] } />
+          )}
       </div>
     );
   }
 }
 
 Trivia.propTypes = {
-  token: PropTypes.string,
+  token: PropTypes.string.isRequired,
+  responseCode: PropTypes.number.isRequired,
+  questions: PropTypes.shape([]).isRequired,
+  dispatchFetchTrivia: PropTypes.func.isRequired,
   dispatchFetchToken: PropTypes.func.isRequired,
-  dispatchSetToken: PropTypes.func.isRequired,
-};
-
-Trivia.defaultProps = {
-  token: '',
 };
 
 const mapStateToProps = (state) => ({
-  token: state.token.value,
+  token: state.token,
+  questions: state.trivia.questions,
+  responseCode: state.trivia.responseCode,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  dispatchFetchTrivia: (token) => dispatch(fetchTrivia(token)),
   dispatchFetchToken: () => dispatch(fetchToken()),
-  dispatchSetToken: (token) => dispatch(successFetchingToken(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Trivia);
