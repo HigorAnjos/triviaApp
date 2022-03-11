@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Header from '../../components/Header';
 
 class FeedBack extends React.Component {
   feedback = () => {
@@ -16,19 +17,22 @@ class FeedBack extends React.Component {
   render() {
     const { assertions, score } = this.props;
     return (
-      <main>
-        { this.feedback() }
-        <h2
-          data-testid="feedback-total-score"
-        >
-          { `Voce acertou ${assertions} quetões!`}
-        </h2>
-        <h2
-          data-testid="feedback-total-question"
-        >
-          { `Um total de ${score} pontos` }
-        </h2>
-      </main>
+      <>
+        <Header />
+        <main>
+          {this.feedback()}
+          <h2
+            data-testid="feedback-total-score"
+          >
+            {`Voce acertou ${assertions} quetões!`}
+          </h2>
+          <h2
+            data-testid="feedback-total-question"
+          >
+            {`Um total de ${score} pontos`}
+          </h2>
+        </main>
+      </>
     );
   }
 }
