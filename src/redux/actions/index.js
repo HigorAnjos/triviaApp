@@ -30,7 +30,7 @@ export const resetGame = () => ({
   type: RESET_GAME,
 });
 
-const successFetchingToken = (token) => ({
+export const successFetchingToken = (token) => ({
   type: TOKEN_SUCCESS,
   payload: token,
 });

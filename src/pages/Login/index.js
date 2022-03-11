@@ -9,6 +9,12 @@ class Login extends Component {
     name: '',
   }
 
+  componentDidUpdate() {
+    const { token, history } = this.props;
+    const isTokenFetched = Boolean(token.length);
+    if (isTokenFetched) { history.push('/trivia'); }
+  }
+
   handleChange = ({ target: { id, value } }) => {
     this.setState({
       [id]: value,
@@ -48,7 +54,6 @@ class Login extends Component {
             onClick={ () => {
               dispatchSetUser(this.state);
               dispatchFetchToken();
-              history.push('/trivia');
             } }
             data-testid="btn-play"
           >
@@ -71,14 +76,21 @@ class Login extends Component {
 }
 
 Login.propTypes = {
+  token: propTypes.string.isRequired,
   dispatchSetUser: propTypes.func.isRequired,
   dispatchFetchToken: propTypes.func.isRequired,
-  history: propTypes.func.isRequired,
+  history: propTypes.shape({
+    push: propTypes.func,
+  }).isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  token: state.token,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchSetUser: (user) => dispatch(setUser(user)),
   dispatchFetchToken: () => dispatch(fetchToken()),
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -3,7 +3,8 @@ import { TRIVIA_ERROR, TRIVIA_FETCHING, TRIVIA_SUCCESS } from '../actions';
 const INITIAL_STATE = {
   isFetching: false,
   error: undefined,
-  value: '',
+  questions: [],
+  responseCode: 0,
 };
 
 const trivia = (state = INITIAL_STATE, action) => {
@@ -17,7 +18,8 @@ const trivia = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       isFetching: false,
-      value: action.payload,
+      questions: action.payload.results,
+      responseCode: action.payload.response_code,
     };
   case TRIVIA_ERROR:
     return {
