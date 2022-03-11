@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getPrevRanking } from '../../services/localstorage';
+
 export class Ranking extends Component {
   constructor() {
     super();
