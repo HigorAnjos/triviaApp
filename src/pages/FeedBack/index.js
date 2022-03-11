@@ -19,6 +19,11 @@ class FeedBack extends React.Component {
     history.push('/');
   }
 
+  redirectToRanking = () => {
+    const { history } = this.props;
+    history.push('/ranking');
+  }
+
   render() {
     const { assertions, score } = this.props;
     return (
@@ -42,6 +47,13 @@ class FeedBack extends React.Component {
             onClick={ this.redirectToLogin }
           >
             Jogar novamente
+          </button>
+          <button
+            type="button"
+            data-testid="btn-ranking"
+            onClick={ this.redirectToRanking }
+          >
+            Ver Ranking
           </button>
         </main>
       </>
