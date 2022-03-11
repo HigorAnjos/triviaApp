@@ -3,7 +3,11 @@ import React, { Component } from 'react';
 export class Configuration extends Component {
   render() {
     return (
-      <div>Configuration</div>
+      <div>
+        <h1 data-testid="settings-title">
+          Configuration
+        </h1>
+      </div>
     );
   }
 }
