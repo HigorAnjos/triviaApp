@@ -18,8 +18,16 @@ class FeedBack extends React.Component {
     return (
       <main>
         { this.feedback() }
-        <h2>{ `Voce acertou ${assertions} quetões!`}</h2>
-        <h2>{ `Um total de ${score} pontos` }</h2>
+        <h2
+          data-testid="feedback-total-score"
+        >
+          { `Voce acertou ${assertions} quetões!`}
+        </h2>
+        <h2
+          data-testid="feedback-total-question"
+        >
+          { `Um total de ${score} pontos` }
+        </h2>
       </main>
     );
   }
