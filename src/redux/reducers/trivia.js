@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   isFetching: false,
   error: undefined,
   questions: [],
-  response_code: undefined,
+  responseCode: undefined,
 };
 
 const trivia = (state = INITIAL_STATE, action) => {
@@ -19,7 +19,7 @@ const trivia = (state = INITIAL_STATE, action) => {
       ...state,
       isFetching: false,
       questions: action.payload.results,
-      response_code: action.payload.response_code,
+      responseCode: action.payload.response_code,
     };
   case TRIVIA_ERROR:
     return {
