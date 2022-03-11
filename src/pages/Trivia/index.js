@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Header from '../../components/Header';
 import { fetchToken, fetchTrivia } from '../../redux/actions';
 import Question from '../../components/Question';
+import { getToken } from '../../services/localstorage';
 
 export class Trivia extends Component {
   state = {
@@ -13,14 +14,16 @@ export class Trivia extends Component {
 
   componentDidMount() {
     const { dispatchFetchTrivia } = this.props;
+    const token = getToken();
+
     dispatchFetchTrivia(token);
   }
 
   componentDidUpdate({ token: prevToken }) {
     const { responseCode, token, dispatchFetchToken, dispatchFetchTrivia } = this.props;
-    if (responseCode && token === prevToken) {
+    if (responseCode && prevToken === token) {
       dispatchFetchToken();
-    } else if (token !== prevToken) {
+    } else if (responseCode) {
       dispatchFetchTrivia(token);
     }
   }

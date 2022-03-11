@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes, { oneOfType } from 'prop-types';
 
 const ANSWERS_ARRAY_SIZE = 4;
-const CORRECT_ANSWER = 'CORRECT_ANSWER';
+const CORRECT_ANSWER = 'correct-answer';
 
 class Question extends React.Component {
   renderMultipleAnswers(correct, incorrectList) {
