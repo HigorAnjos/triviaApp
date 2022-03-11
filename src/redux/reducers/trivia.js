@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   isFetching: false,
   error: undefined,
   questions: [],
-  responseCode: undefined,
+  responseCode: 0,
 };
 
 const trivia = (state = INITIAL_STATE, action) => {
