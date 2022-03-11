@@ -1,7 +1,6 @@
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { fetchToken, setUser } from '../../redux/actions';
 
 class Login extends Component {
@@ -43,21 +42,28 @@ class Login extends Component {
             />
           </label>
 
-          <Link to="/trivia">
-            <button
-              type="button"
-              disabled={ isDisabledButton }
-              onClick={ () => {
-                dispatchSetUser(this.state);
-                dispatchFetchToken();
-                console.log(dispatchFetchToken());
-                history.push('/trivia');
-              } }
-              data-testid="btn-play"
-            >
-              JOGAR!
-            </button>
-          </Link>
+          <button
+            type="button"
+            disabled={ isDisabledButton }
+            onClick={ () => {
+              dispatchSetUser(this.state);
+              dispatchFetchToken();
+              history.push('/trivia');
+            } }
+            data-testid="btn-play"
+          >
+            Jogar
+          </button>
+
+          <button
+            type="button"
+            data-testid="btn-settings"
+            onClick={ () => {
+              history.push('/Configuration');
+            } }
+          >
+            Configurações
+          </button>
         </form>
       </main>
     );
