@@ -2,7 +2,7 @@ import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setUser, fetchToken } from '../../redux/actions';
+import { fetchToken, setUser } from '../../redux/actions';
 
 class Login extends Component {
   state = {
@@ -19,7 +19,7 @@ class Login extends Component {
   render() {
     const { gravatarEmail, name } = this.state;
     const isDisabledButton = !(gravatarEmail.length && name.length);
-    const { dispatchSetUser, history, startFetchingToken } = this.props;
+    const { dispatchSetUser, history, dispatchFetchToken } = this.props;
 
     return (
       <main>
@@ -49,19 +49,10 @@ class Login extends Component {
               disabled={ isDisabledButton }
               onClick={ () => {
                 dispatchSetUser(this.state);
-                startFetchingToken();
+                dispatchFetchToken();
                 history.push('/trivia');
               } }
               data-testid="btn-play"
-            >
-              JOGAR!
-            </button>
-          </Link>
-
-          <Link to="/Configuration">
-            <button
-              type="button"
-              data-testid="btn-settings"
             >
               JOGAR!
             </button>
@@ -74,13 +65,13 @@ class Login extends Component {
 
 Login.propTypes = {
   dispatchSetUser: propTypes.func.isRequired,
-  startFetchingToken: propTypes.func.isRequired,
+  dispatchFetchToken: propTypes.func.isRequired,
   history: propTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchSetUser: (user) => dispatch(setUser(user)),
-  startFetchingToken: () => dispatch(fetchToken()),
+  dispatchFetchToken: () => dispatch(fetchToken()),
 });
 
 export default connect(null, mapDispatchToProps)(Login);
