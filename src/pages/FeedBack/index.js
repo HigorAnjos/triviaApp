@@ -14,6 +14,11 @@ class FeedBack extends React.Component {
     return (<h1 data-testid="feedback-text">Well Done!</h1>);
   }
 
+  redirectToLogin = () => {
+    const { history } = this.props;
+    history.push('/');
+  }
+
   render() {
     const { assertions, score } = this.props;
     return (
@@ -31,6 +36,13 @@ class FeedBack extends React.Component {
           >
             {`Um total de ${score} pontos`}
           </h2>
+          <button
+            type="button"
+            data-testid="btn-play-again"
+            onClick={ this.redirectToLogin }
+          >
+            Jogar novamente
+          </button>
         </main>
       </>
     );
@@ -40,6 +52,9 @@ class FeedBack extends React.Component {
 FeedBack.propTypes = {
   assertions: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({
