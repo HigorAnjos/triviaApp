@@ -18,7 +18,8 @@ const trivia = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       isFetching: false,
-      questions: action.payload,
+      questions: action.payload.results,
+      response_code: action.payload.response_code,
     };
   case TRIVIA_ERROR:
     return {

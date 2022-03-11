@@ -5,11 +5,12 @@ import { getToken, setToken } from '../../services/localstorage';
 
 import Header from '../../components/Header';
 import { fetchToken, successFetchingToken } from '../../redux/actions';
+import Question from '../../components/Question';
 
 export class Trivia extends Component {
   componentDidMount() {
     const { dispatchSetToken, dispatchFetchToken } = this.props;
-    const token = getToken() || '';
+    const token = getToken();
     if (!token) {
       dispatchFetchToken();
     } else {
@@ -18,8 +19,8 @@ export class Trivia extends Component {
   }
 
   componentDidUpdate() {
-    if (!getToken()) {
-      const { token } = this.props;
+    const { token } = this.props;
+    if (token !== getToken()) {
       setToken(token);
     }
   }
@@ -30,8 +31,7 @@ export class Trivia extends Component {
     return (
       <div>
         <Header />
-        Trivia
-        <p>{ token }</p>
+        <Question token={ token } />
       </div>
     );
   }
