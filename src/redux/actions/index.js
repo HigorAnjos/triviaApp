@@ -1,5 +1,5 @@
+import { setToken } from '../../services/localstorage';
 import fetchAPI from '../../services/trivia';
-
 // ACTIONS TYPES
 
 export const SET_USER = 'SET_USER';
@@ -38,6 +38,7 @@ const successFetchingToken = (token) => ({
 export const fetchToken = () => async (dispatch) => {
   try {
     const { token } = await fetchAPI('https://opentdb.com/api_token.php?command=request');
+    setToken(token);
     dispatch(successFetchingToken(token));
   } catch (error) {
     console.log(error);

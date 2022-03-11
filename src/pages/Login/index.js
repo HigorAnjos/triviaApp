@@ -50,6 +50,7 @@ class Login extends Component {
               onClick={ () => {
                 dispatchSetUser(this.state);
                 dispatchFetchToken();
+                console.log(dispatchFetchToken());
                 history.push('/trivia');
               } }
               data-testid="btn-play"
