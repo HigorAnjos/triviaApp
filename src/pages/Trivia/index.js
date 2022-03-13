@@ -28,8 +28,14 @@ export class Trivia extends Component {
     }
   }
 
+  questionIndexNext = () => {
+    this.setState((prevState) => ({
+      questionIndex: prevState.questionIndex + 1,
+    }));
+  }
+
   render() {
-    const { questions } = this.props;
+    const { questions, history } = this.props;
     const { questionIndex } = this.state;
     const isLoading = questions.length === 0;
 
@@ -43,7 +49,12 @@ export class Trivia extends Component {
               Carregando...
             </main>
           ) : (
-            <Question question={ questions[questionIndex] } />
+            <Question
+              question={ questions[questionIndex] }
+              questionIndex={ questionIndex }
+              questionIndexNext={ this.questionIndexNext }
+              history={ history }
+            />
           )}
       </div>
     );

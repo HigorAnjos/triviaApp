@@ -6,15 +6,24 @@ import { setScore } from '../../redux/actions';
 const ANSWERS_ARRAY_SIZE = 4;
 const CORRECT_ANSWER = 'correct-answer';
 const ONE_SECOND = 1000;
+const LIMIT_QUESTIONS = 4;
 let interval;
 
 class Question extends React.Component {
   state = {
     timer: 30,
     randomCorrectIndex: Math.floor(Math.random() * ANSWERS_ARRAY_SIZE),
+    isBtnNextVisible: false,
   };
 
   componentDidMount() {
+    this.startTimer();
+  }
+
+  startTimer = () => {
+    this.setState({
+      timer: 30,
+    });
     interval = setInterval(() => {
       const { timer } = this.state;
       if (timer <= 0) {
@@ -37,6 +46,27 @@ class Question extends React.Component {
       clearInterval(interval);
       // set o score se acertou no redux
       dispatchSetScore(timer, difficultyPoints[difficulty]);
+    }
+
+    this.setState({
+      isBtnNextVisible: true,
+    });
+  }
+
+  handleClickNextQuestion = () => {
+    // fazer um question++ para proxima pergunta
+    console.log(this.props);
+    const { questionIndexNext, questionIndex, history } = this.props;
+    if (questionIndex < LIMIT_QUESTIONS) {
+      questionIndexNext();
+      this.setState({
+        isBtnNextVisible: false,
+        timer: 30,
+      }, this.startTimer);
+
+    } else {
+      // quando chegar na ultima e clickar em prox sera redirecionado para feedback
+      history.push('/feedback');
     }
   }
 
@@ -92,7 +122,7 @@ class Question extends React.Component {
   render() {
     const { question: { type, category, question: questionText,
       correct_answer: correctAnswer, incorrect_answers: incorrectAnswers } } = this.props;
-    const { timer } = this.state;
+    const { timer, isBtnNextVisible } = this.state;
 
     return (
       <main>
@@ -109,11 +139,17 @@ class Question extends React.Component {
             { timer }
           </div>
           <div>
-            <button
-              type="button"
-            >
-              Próxima
-            </button>
+            {
+              isBtnNextVisible && (
+                <button
+                  onClick={ this.handleClickNextQuestion }
+                  data-testid="btn-next"
+                  type="button"
+                >
+                  Próxima
+                </button>
+              )
+            }
           </div>
         </section>
       </main>
