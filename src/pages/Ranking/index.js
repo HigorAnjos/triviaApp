@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getPrevRanking } from '../../services/localstorage';
-
 export class Ranking extends Component {
   constructor() {
     super();
@@ -46,13 +45,17 @@ export class Ranking extends Component {
   render() {
     return (
       <main>
-        <button
-          data-testid="btn-go-home"
-          type="button"
-          onClick={ this.handleClick }
-        >
-          inicio
-        </button>
+        <h1 data-testid="ranking-title">Ranking</h1>
+        <a href="/">
+          {/* bug muito loco no input quando usa a funcao */}
+          <button
+            data-testid="btn-go-home"
+            type="button"
+            // onClick={ this.handleClick }
+          >
+            inicio
+          </button>
+        </a>
         {
           this.rankingList()
         }

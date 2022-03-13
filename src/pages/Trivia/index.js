@@ -67,6 +67,9 @@ Trivia.propTypes = {
   questions: PropTypes.shape([]).isRequired,
   dispatchFetchTrivia: PropTypes.func.isRequired,
   dispatchFetchToken: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({

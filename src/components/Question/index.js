@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes, { oneOfType } from 'prop-types';
 import { connect } from 'react-redux';
 import { setScore } from '../../redux/actions';
+import './style.css';
 
 const ANSWERS_ARRAY_SIZE = 4;
 const CORRECT_ANSWER = 'correct-answer';
@@ -14,6 +15,7 @@ class Question extends React.Component {
     timer: 30,
     randomCorrectIndex: Math.floor(Math.random() * ANSWERS_ARRAY_SIZE),
     isBtnNextVisible: false,
+    hasStylesBtns: false,
   };
 
   componentDidMount() {
@@ -44,12 +46,13 @@ class Question extends React.Component {
     if (value === 'true') {
       // parar o timer
       clearInterval(interval);
-      // set o score se acertou no redux
+      // set o score se acertou no redux + Assertion +1
       dispatchSetScore(timer, difficultyPoints[difficulty]);
     }
 
     this.setState({
       isBtnNextVisible: true,
+      hasStylesBtns: true,
     });
   }
 
@@ -61,25 +64,34 @@ class Question extends React.Component {
       questionIndexNext();
       this.setState({
         isBtnNextVisible: false,
+        hasStylesBtns: false,
         timer: 30,
       }, this.startTimer);
-
     } else {
       // quando chegar na ultima e clickar em prox sera redirecionado para feedback
       history.push('/feedback');
     }
   }
 
+  setStylesQuestions = (answer) => {
+    if (answer) {
+      return 'unselected-answer correct-answer';
+    }
+    return 'unselected-answer wrong-answer';
+  }
+
   renderMultipleAnswers(correct, incorrectList) {
-    const { randomCorrectIndex, timer } = this.state;
+    const { randomCorrectIndex, timer, hasStylesBtns } = this.state;
     const answersList = [...incorrectList];
 
     answersList.splice(randomCorrectIndex, 0, correct);
     return answersList.map((answer, index) => (
       <button
+        className={ (hasStylesBtns)
+          ? this.setStylesQuestions((index === randomCorrectIndex))
+          : 'unselected-answer' }
         type="button"
         onClick={ this.handleClickAnswer }
-        className="unselected-answer"
         disabled={ timer < 1 }
         key={ index }
         value={ (index === randomCorrectIndex) }
@@ -94,7 +106,7 @@ class Question extends React.Component {
 
   renderBoolAnswers(correct) {
     const answersList = ['True', 'False'];
-    const { timer } = this.state;
+    const { timer, hasStylesBtns } = this.state;
 
     return (
       <>
@@ -104,7 +116,9 @@ class Question extends React.Component {
               type="button"
               key={ index }
               onClick={ this.handleClickAnswer }
-              className="unselected-answer"
+              className={ (hasStylesBtns)
+                ? this.setStylesQuestions((answer === correct))
+                : 'unselected-answer' }
               disabled={ timer < 1 }
               value={ (answer === correct) }
               data-testid={ answer === correct
