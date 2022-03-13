@@ -76,6 +76,7 @@ FeedBack.propTypes = {
     push: PropTypes.func.isRequired,
   }).isRequired,
   dispatchResetGame: PropTypes.func.isRequired,
+  player: PropTypes.shape({}).isRequired,
 };
 
 const mapStateToProps = (state) => ({
