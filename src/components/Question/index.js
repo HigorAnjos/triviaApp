@@ -163,6 +163,11 @@ Question.propTypes = {
     PropTypes.array,
   ])).isRequired,
   dispatchSetScore: PropTypes.func.isRequired,
+  questionIndexNext: PropTypes.func.isRequired,
+  questionIndex: PropTypes.number.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
