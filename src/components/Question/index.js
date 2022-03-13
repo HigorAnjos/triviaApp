@@ -33,7 +33,7 @@ class Question extends React.Component {
     const difficultyPoints = { hard: 3, medium: 2, easy: 1 };
 
     if (value === 'true') {
-      // para o timer
+      // parar o timer
       clearInterval(interval);
       // set o score se acertou no redux
       dispatchSetScore(timer, difficultyPoints[difficulty]);
