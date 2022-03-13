@@ -6,6 +6,11 @@ import { resetGame } from '../../redux/actions';
 import { saveRanking } from '../../services/localstorage';
 
 class FeedBack extends React.Component {
+  componentDidMount() {
+    const { player } = this.props;
+    saveRanking(player);
+  }
+
   componentWillUnmount() {
     const { dispatchResetGame } = this.props;
     dispatchResetGame();
@@ -27,8 +32,7 @@ class FeedBack extends React.Component {
   }
 
   redirectToRanking = () => {
-    const { history, player } = this.props;
-    saveRanking(player);
+    const { history } = this.props;
     history.push('/ranking');
   }
 
