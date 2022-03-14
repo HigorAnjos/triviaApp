@@ -43,9 +43,10 @@ class Question extends React.Component {
     const { dispatchSetScore, question: { difficulty } } = this.props;
     const difficultyPoints = { hard: 3, medium: 2, easy: 1 };
 
+    // parar o timer
+    clearInterval(interval);
+
     if (value === 'true') {
-      // parar o timer
-      clearInterval(interval);
       // set o score se acertou no redux + Assertion +1
       dispatchSetScore(timer, difficultyPoints[difficulty]);
     }
@@ -58,7 +59,6 @@ class Question extends React.Component {
 
   handleClickNextQuestion = () => {
     // fazer um question++ para proxima pergunta
-    console.log(this.props);
     const { questionIndexNext, questionIndex, history } = this.props;
     if (questionIndex < LIMIT_QUESTIONS) {
       questionIndexNext();
