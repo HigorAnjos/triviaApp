@@ -1,4 +1,4 @@
-import { TRIVIA_ERROR, TRIVIA_FETCHING, TRIVIA_SUCCESS } from '../actions';
+import { RESET_GAME, TRIVIA_ERROR, TRIVIA_FETCHING, TRIVIA_SUCCESS } from '../actions';
 
 const INITIAL_STATE = {
   isFetching: false,
@@ -26,6 +26,12 @@ const trivia = (state = INITIAL_STATE, action) => {
       ...state,
       isFetching: false,
       error: action.payload,
+    };
+  case RESET_GAME:
+    return {
+      ...state,
+      questions: [],
+      responseCode: 0,
     };
   default:
     return state;

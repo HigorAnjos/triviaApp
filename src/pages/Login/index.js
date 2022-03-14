@@ -11,8 +11,8 @@ class Login extends Component {
 
   componentDidUpdate() {
     const { token, history } = this.props;
-    const isTokenFetched = Boolean(token.length);
-    if (isTokenFetched) { history.push('/trivia'); }
+    const isFetchedToken = Boolean(token.length);
+    if (isFetchedToken) { history.push('/trivia'); }
   }
 
   handleChange = ({ target: { id, value } }) => {
