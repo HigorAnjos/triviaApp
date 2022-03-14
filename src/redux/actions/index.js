@@ -49,9 +49,9 @@ const startFetchingTrivia = () => ({
   type: TRIVIA_FETCHING,
 });
 
-const successFetchingTrivia = (token) => ({
+export const successFetchingTrivia = (trivia) => ({
   type: TRIVIA_SUCCESS,
-  payload: token,
+  payload: trivia,
 });
 
 const errorFetchingTrivia = (error) => ({
