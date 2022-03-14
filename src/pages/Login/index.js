@@ -2,7 +2,7 @@ import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchToken, setUser, successFetchingToken } from '../../redux/actions';
-import { setToken } from '../../services/localstorage';
+
 class Login extends Component {
   state = {
     gravatarEmail: '',
