@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import getGravatarUrl from '../../services/gravatar';
+import './style.css';
 
 class Header extends React.Component {
   render() {
@@ -10,16 +11,25 @@ class Header extends React.Component {
     return (
       <header>
         <img
+          className="player-img"
           src={ getGravatarUrl(gravatarEmail) }
           alt="Imagem de perfil"
           data-testid="header-profile-picture"
         />
 
-        <h1 data-testid="header-player-name">
+        <h1
+          className="player-name"
+          data-testid="header-player-name"
+        >
           { name }
         </h1>
 
-        <span data-testid="header-score">{ score }</span>
+        <p
+          className="player-score"
+        >
+          Pontuação atual:
+          <span data-testid="header-score">{` ${score}`}</span>
+        </p>
       </header>
     );
   }
