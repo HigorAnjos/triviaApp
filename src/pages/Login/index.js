@@ -1,18 +1,25 @@
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchToken, setUser } from '../../redux/actions';
-
+import { fetchToken, setUser, successFetchingToken } from '../../redux/actions';
+import { setToken } from '../../services/localstorage';
 class Login extends Component {
   state = {
     gravatarEmail: '',
     name: '',
+    isGameStart: false,
+  }
+
+  componentDidMount() {
+    const { dispatchReset } = this.props;
+    dispatchReset();
   }
 
   componentDidUpdate() {
     const { token, history } = this.props;
-    const isTokenFetched = Boolean(token.length);
-    if (isTokenFetched) { history.push('/trivia'); }
+    const { isGameStart } = this.state;
+    const isFetchedToken = Boolean(token.length);
+    if (isGameStart && isFetchedToken) { history.push('/trivia'); }
   }
 
   handleChange = ({ target: { id, value } }) => {
@@ -53,7 +60,9 @@ class Login extends Component {
             disabled={ isDisabledButton }
             onClick={ () => {
               dispatchSetUser(this.state);
-              dispatchFetchToken();
+              this.setState(() => ({
+                isGameStart: true,
+              }), dispatchFetchToken);
             } }
             data-testid="btn-play"
           >
@@ -82,6 +91,7 @@ Login.propTypes = {
   history: propTypes.shape({
     push: propTypes.func,
   }).isRequired,
+  dispatchReset: propTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -91,6 +101,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   dispatchSetUser: (user) => dispatch(setUser(user)),
   dispatchFetchToken: () => dispatch(fetchToken()),
+  dispatchReset: () => dispatch(successFetchingToken('')),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
