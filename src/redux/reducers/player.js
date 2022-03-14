@@ -1,3 +1,4 @@
+import { setScore } from '../../services/localstorage';
 import { RESET_GAME, SET_SCORE, SET_USER } from '../actions';
 
 const INITIAL_STATE = {
@@ -16,6 +17,7 @@ const player = (state = INITIAL_STATE, action) => {
       gravatarEmail: action.payload.gravatarEmail,
     };
   case SET_SCORE:
+    setScore(state.score + action.payload);
     return {
       ...state,
       assertions: state.assertions + 1,

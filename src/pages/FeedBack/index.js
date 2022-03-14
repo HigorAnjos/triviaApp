@@ -2,8 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../../components/Header';
+import { resetGame } from '../../redux/actions';
+import { saveRanking } from '../../services/localstorage';
 
 class FeedBack extends React.Component {
+  componentDidMount() {
+    const { player } = this.props;
+    saveRanking(player);
+  }
+
+  componentWillUnmount() {
+    const { dispatchResetGame } = this.props;
+    dispatchResetGame();
+  }
+
   feedback = () => {
     const { assertions } = this.props;
     const THREE_ASSERTIONS = 3;
@@ -31,15 +43,15 @@ class FeedBack extends React.Component {
         <Header />
         <main>
           {this.feedback()}
-          <h2
-            data-testid="feedback-total-score"
-          >
-            {`Voce acertou ${assertions} quetões!`}
+          <h2>
+            Voce acertou
+            <span data-testid="feedback-total-question">{assertions}</span>
+            quetões!
           </h2>
-          <h2
-            data-testid="feedback-total-question"
-          >
-            {`Um total de ${score} pontos`}
+          <h2>
+            Um total de
+            <span data-testid="feedback-total-score">{score}</span>
+            pontos
           </h2>
           <button
             type="button"
@@ -67,11 +79,18 @@ FeedBack.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  dispatchResetGame: PropTypes.func.isRequired,
+  player: PropTypes.shape({}).isRequired,
 };
 
 const mapStateToProps = (state) => ({
   assertions: state.player.assertions,
   score: state.player.score,
+  player: state.player,
 });
 
-export default connect(mapStateToProps, null)(FeedBack);
+const mapDispatchToProps = (dispatch) => ({
+  dispatchResetGame: () => dispatch(resetGame()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeedBack);
