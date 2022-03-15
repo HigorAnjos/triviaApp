@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes, { oneOfType } from 'prop-types';
+import sanitizeHtml from 'sanitize-html';
 import { connect } from 'react-redux';
 import { setScore } from '../../redux/actions';
 import './style.css';
@@ -137,25 +138,36 @@ class Question extends React.Component {
     const { question: { type, category, question: questionText,
       correct_answer: correctAnswer, incorrect_answers: incorrectAnswers } } = this.props;
     const { timer, isBtnNextVisible } = this.state;
+    const cleanQuestionText = sanitizeHtml(questionText);
 
     return (
-      <main>
+      <main className="Question">
         <section className="question-container">
-          <h1 data-testid="question-category">{category}</h1>
-          <p data-testid="question-text">{questionText}</p>
+          <h1 className="category" data-testid="question-category">{category}</h1>
+          <p
+            className="question"
+            data-testid="question-text"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={ { __html: cleanQuestionText } }
+          />
         </section>
 
-        <section className="answers-container" data-testid="answer-options">
-          {type === 'multiple'
-            ? this.renderMultipleAnswers(correctAnswer, incorrectAnswers)
-            : this.renderBoolAnswers(correctAnswer)}
-          <div>
+        <div className="vl" />
+
+        <section className="buttons-container" data-testid="answer-options">
+          <div className="timer">
             { timer }
+          </div>
+          <div className="answers-container">
+            {type === 'multiple'
+              ? this.renderMultipleAnswers(correctAnswer, incorrectAnswers)
+              : this.renderBoolAnswers(correctAnswer)}
           </div>
           <div>
             {
               isBtnNextVisible && (
                 <button
+                  className="next-button"
                   onClick={ this.handleClickNextQuestion }
                   data-testid="btn-next"
                   type="button"
