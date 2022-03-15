@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes, { oneOfType } from 'prop-types';
-// import sanitizeHtml from 'sanitize-html';
+import sanitizeHtml from 'sanitize-html';
 import { connect } from 'react-redux';
 import { setScore } from '../../redux/actions';
 import './style.css';
@@ -138,7 +138,7 @@ class Question extends React.Component {
     const { question: { type, category, question: questionText,
       correct_answer: correctAnswer, incorrect_answers: incorrectAnswers } } = this.props;
     const { timer, isBtnNextVisible } = this.state;
-    // const cleanQuestionText = sanitizeHtml(questionText);
+    const cleanQuestionText = sanitizeHtml(questionText);
 
     return (
       <main className="Question">
@@ -148,10 +148,8 @@ class Question extends React.Component {
             className="question"
             data-testid="question-text"
             // eslint-disable-next-line react/no-danger
-            // dangerouslySetInnerHTML={ { __html: cleanQuestionText } }
-          >
-            {questionText}
-          </p>
+            dangerouslySetInnerHTML={ { __html: cleanQuestionText } }
+          />
         </section>
 
         <div className="vl" />
