@@ -67,7 +67,11 @@ button:hover {
 }
 
 .correct-answer {
-  border: 2px solid rgb(6, 240, 15);
+  border: 3px solid rgb(6, 240, 15);
+}
+
+.wrong-answer {
+  border: 3px solid red;
 }
 
 .next-button {
@@ -82,8 +86,4 @@ button:hover {
   margin-top: 6px;
   padding: 5px;
   width: 35px;
-}
-
-.wrong-answer {
-  border: 2px solid red;
 }
