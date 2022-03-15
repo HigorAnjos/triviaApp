@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import './style.css';
 
 import Header from '../../components/Header';
 import { fetchToken, fetchTrivia } from '../../redux/actions';
@@ -45,7 +46,7 @@ export class Trivia extends Component {
 
         {isLoading
           ? (
-            <main>
+            <main className="loading">
               Carregando...
             </main>
           ) : (
