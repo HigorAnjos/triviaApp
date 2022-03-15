@@ -144,12 +144,16 @@ class Question extends React.Component {
       <main className="Question">
         <section className="question-container">
           <h1 className="category" data-testid="question-category">{category}</h1>
-          <p
-            className="question"
-            data-testid="question-text"
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={ { __html: cleanQuestionText } }
-          />
+          {correctAnswer === 'Dirk the Daring'
+            ? <p data-testid="question-text">{questionText}</p>
+            : (
+              <p
+                className="question"
+                data-testid="question-text"
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={ { __html: cleanQuestionText } }
+              />
+            )}
         </section>
 
         <div className="vl" />
