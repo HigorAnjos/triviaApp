@@ -44,7 +44,7 @@ class Question extends React.Component {
     const { dispatchSetScore, question: { difficulty } } = this.props;
     const difficultyPoints = { hard: 3, medium: 2, easy: 1 };
 
-    // parar o timer
+    // para o timer
     clearInterval(interval);
 
     if (value === 'true') {
