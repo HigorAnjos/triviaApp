@@ -45,13 +45,13 @@ class FeedBack extends React.Component {
           {this.feedback()}
           <h2>
             Voce acertou
-            <span data-testid="feedback-total-question">{assertions}</span>
+            <span data-testid="feedback-total-question">{` ${assertions} `}</span>
             quetões!
           </h2>
           <h2>
             Um total de
-            <span data-testid="feedback-total-score">{score}</span>
-            pontos
+            <span data-testid="feedback-total-score">{` ${score} `}</span>
+            pontos.
           </h2>
           <button
             type="button"
