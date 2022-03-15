@@ -158,11 +158,11 @@ class Question extends React.Component {
 
         <div className="vl" />
 
-        <section className="buttons-container" data-testid="answer-options">
+        <section className="buttons-container">
           <div className="timer">
             { timer }
           </div>
-          <div className="answers-container">
+          <div className="answers-container" data-testid="answer-options">
             {type === 'multiple'
               ? this.renderMultipleAnswers(correctAnswer, incorrectAnswers)
               : this.renderBoolAnswers(correctAnswer)}
