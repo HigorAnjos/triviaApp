@@ -76,9 +76,9 @@ class Question extends React.Component {
 
   setStylesQuestions = (answer) => {
     if (answer) {
-      return 'unselected-answer correct-answer';
+      return 'answer correct-answer';
     }
-    return 'unselected-answer wrong-answer';
+    return 'answer wrong-answer';
   }
 
   renderMultipleAnswers(correct, incorrectList) {
@@ -90,7 +90,7 @@ class Question extends React.Component {
       <button
         className={ (hasStylesBtns)
           ? this.setStylesQuestions((index === randomCorrectIndex))
-          : 'unselected-answer' }
+          : 'answer' }
         type="button"
         onClick={ this.handleClickAnswer }
         disabled={ timer < 1 }
@@ -119,7 +119,7 @@ class Question extends React.Component {
               onClick={ this.handleClickAnswer }
               className={ (hasStylesBtns)
                 ? this.setStylesQuestions((answer === correct))
-                : 'unselected-answer' }
+                : 'answer' }
               disabled={ timer < 1 }
               value={ (answer === correct) }
               data-testid={ answer === correct
@@ -134,15 +134,10 @@ class Question extends React.Component {
     );
   }
 
-  render() {
-    const { question: { type, category, question: questionText,
-      correct_answer: correctAnswer, incorrect_answers: incorrectAnswers } } = this.props;
-    const { timer, isBtnNextVisible } = this.state;
-    const cleanQuestionText = sanitizeHtml(questionText);
-
-    return (
-      <main className="Question">
-        <section className="question-container">
+  renderQuestion = (correctAnswer, category, questionText, cleanQuestionText) => (
+    <div className="rotated-card-1">
+      <div className="rotated-card-2">
+        <div className="question-card">
           <h1 className="category" data-testid="question-category">{category}</h1>
           {correctAnswer === 'Dirk the Daring'
             ? <p data-testid="question-text">{questionText}</p>
@@ -154,33 +149,44 @@ class Question extends React.Component {
                 dangerouslySetInnerHTML={ { __html: cleanQuestionText } }
               />
             )}
+        </div>
+      </div>
+    </div>
+  )
+
+  render() {
+    const { question: { type, category, question: questionText,
+      correct_answer: correctAnswer, incorrect_answers: incorrectAnswers } } = this.props;
+    const { timer, isBtnNextVisible } = this.state;
+    const cleanQuestionText = sanitizeHtml(questionText);
+
+    return (
+      <main className="Question">
+        <section className="question-container">
+          {this.renderQuestion(correctAnswer, category, questionText, cleanQuestionText)}
+          <div className="timer">
+            { timer }
+          </div>
         </section>
 
         <div className="vl" />
 
-        <section className="buttons-container">
-          <div className="timer">
-            { timer }
-          </div>
-          <div className="answers-container" data-testid="answer-options">
-            {type === 'multiple'
-              ? this.renderMultipleAnswers(correctAnswer, incorrectAnswers)
-              : this.renderBoolAnswers(correctAnswer)}
-          </div>
-          <div>
-            {
-              isBtnNextVisible && (
-                <button
-                  className="next-button"
-                  onClick={ this.handleClickNextQuestion }
-                  data-testid="btn-next"
-                  type="button"
-                >
-                  Próxima
-                </button>
-              )
-            }
-          </div>
+        <section className="buttons-container" data-testid="answer-options">
+          {type === 'multiple'
+            ? this.renderMultipleAnswers(correctAnswer, incorrectAnswers)
+            : this.renderBoolAnswers(correctAnswer)}
+          {
+            isBtnNextVisible && (
+              <button
+                className="next-button"
+                onClick={ this.handleClickNextQuestion }
+                data-testid="btn-next"
+                type="button"
+              >
+                Próxima
+              </button>
+            )
+          }
         </section>
       </main>
     );
