@@ -4,7 +4,7 @@
 
 header {
   align-items: center;
-  background-color: #1d5a41;
+  background-color: #3c3c3c;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   box-shadow: 0 4px 8px 0 rgb(92, 92, 92);
@@ -27,7 +27,6 @@ header > * {
 .player-name {
   background-color: white;
   border-radius: 15px;
-  color: #344e41;
   margin: 0 25px;
   padding: 13px 40px;
 }
@@ -35,7 +34,6 @@ header > * {
 .player-score {
   background-color: white;
   border-radius: 12px;
-  color: #344e41;
   margin: 5px;
   padding: 8px 25px;
   width: 210px;
