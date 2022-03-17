@@ -17,6 +17,7 @@ class Question extends React.Component {
     randomCorrectIndex: Math.floor(Math.random() * ANSWERS_ARRAY_SIZE),
     isBtnNextVisible: false,
     hasStylesBtns: false,
+    clickedAnswerIndex: '',
   };
 
   componentDidMount() {
@@ -39,15 +40,15 @@ class Question extends React.Component {
     }, ONE_SECOND);
   }
 
-  handleClickAnswer = ({ target: { value } }) => {
-    const { timer } = this.state;
+  handleClickAnswer = ({ target: { value: index } }) => {
+    const { timer, randomCorrectIndex } = this.state;
     const { dispatchSetScore, question: { difficulty } } = this.props;
     const difficultyPoints = { hard: 3, medium: 2, easy: 1 };
 
     // para o timer
     clearInterval(interval);
 
-    if (value === 'true') {
+    if (index === randomCorrectIndex) {
       // set o score se acertou no redux + Assertion +1
       dispatchSetScore(timer, difficultyPoints[difficulty]);
     }
@@ -55,6 +56,7 @@ class Question extends React.Component {
     this.setState({
       isBtnNextVisible: true,
       hasStylesBtns: true,
+      clickedAnswerIndex: index,
     });
   }
 
@@ -74,28 +76,28 @@ class Question extends React.Component {
     }
   }
 
-  setStylesQuestions = (answer) => {
-    if (answer) {
-      return 'answer correct-answer';
-    }
-    return 'answer wrong-answer';
-  }
+  setStylesQuestions = (isCorrect, isSelected) => (
+    `answer${isCorrect ? ' correct-answer' : ' wrong-answer'}`
+      + `${isSelected ? ' selected-answer' : ''}`
+  )
 
   renderMultipleAnswers(correct, incorrectList) {
-    const { randomCorrectIndex, timer, hasStylesBtns } = this.state;
+    const { randomCorrectIndex, timer, hasStylesBtns,
+      isBtnNextVisible, clickedAnswerIndex } = this.state;
     const answersList = [...incorrectList];
 
     answersList.splice(randomCorrectIndex, 0, correct);
     return answersList.map((answer, index) => (
       <button
         className={ (hasStylesBtns)
-          ? this.setStylesQuestions((index === randomCorrectIndex))
+          ? this.setStylesQuestions((index === randomCorrectIndex),
+            (index === Number(clickedAnswerIndex)))
           : 'answer' }
         type="button"
         onClick={ this.handleClickAnswer }
-        disabled={ timer < 1 }
+        disabled={ timer < 1 || isBtnNextVisible }
         key={ index }
-        value={ (index === randomCorrectIndex) }
+        value={ index }
         data-testid={ index === randomCorrectIndex
           ? CORRECT_ANSWER
           : `wrong-answer${incorrectList.indexOf(answer)}` }
@@ -107,7 +109,7 @@ class Question extends React.Component {
 
   renderBoolAnswers(correct) {
     const answersList = ['True', 'False'];
-    const { timer, hasStylesBtns } = this.state;
+    const { timer, hasStylesBtns, isBtnNextVisible } = this.state;
 
     return (
       <>
@@ -120,7 +122,7 @@ class Question extends React.Component {
               className={ (hasStylesBtns)
                 ? this.setStylesQuestions((answer === correct))
                 : 'answer' }
-              disabled={ timer < 1 }
+              disabled={ timer < 1 || isBtnNextVisible }
               value={ (answer === correct) }
               data-testid={ answer === correct
                 ? CORRECT_ANSWER
