@@ -9,7 +9,7 @@ class Header extends React.Component {
     const { name, score, gravatarEmail } = this.props;
 
     return (
-      <header className="header-header">
+      <header className="Header">
         <img
           className="player-img"
           src={ getGravatarUrl(gravatarEmail) }

@@ -12,12 +12,22 @@ code {
 		monospace;
 }
 
+body,
 #root,
-.App,
-body {
-	box-sizing: border-box;
+.App {
 	height: 100vh;
 	margin: 0px;
 	padding: 0px;
-	width: 100%;
+	width: 100vw;
+}
+
+.App {
+	display: flex;
+	flex-direction: column;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
 }

@@ -1,12 +1,13 @@
 .container-form {
-  background-color: rgb(144, 235, 238);
-  height: 80vh;
-  max-width: 80vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5% auto;
+	background-color: rgb(144, 235, 238);
+	height: 80vh;
+	max-width: 80vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
 }
+/*
 .container-form-box {
   background-color: lightgreen;
   min-height: 98%;
@@ -27,7 +28,7 @@
 .img-avatar {
   width: 40%;
   border-radius: 50%;
-}
+} */
 /* 
 .container-form-main {
   background-color: rgb(208, 144, 238);

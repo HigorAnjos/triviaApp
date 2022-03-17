@@ -112,15 +112,6 @@ class Login extends Component {
               Lembrar-me
             </section>
           </main>
-
-          <footer className="container-form-footer">
-            <a
-              href="https://www.google.com.br/"
-              className="container-form-footer-a"
-            >
-              senha
-            </a>
-          </footer>
         </form>
       </div>
     );
