@@ -5,15 +5,17 @@ import { connect } from 'react-redux';
 import { setScore } from '../../redux/actions';
 import './style.css';
 
+const TIMER_SEC = 30;
 const ANSWERS_ARRAY_SIZE = 4;
 const CORRECT_ANSWER = 'correct-answer';
 const ONE_SECOND = 1000;
 const LIMIT_QUESTIONS = 4;
+const TIMER_ENDING = 5;
 let interval;
 
 class Question extends React.Component {
   state = {
-    timer: 30,
+    timer: TIMER_SEC,
     randomCorrectIndex: Math.floor(Math.random() * ANSWERS_ARRAY_SIZE),
     isBtnNextVisible: false,
     hasStylesBtns: false,
@@ -25,9 +27,6 @@ class Question extends React.Component {
   }
 
   startTimer = () => {
-    this.setState({
-      timer: 30,
-    });
     interval = setInterval(() => {
       const { timer } = this.state;
       if (timer <= 0) {
@@ -35,20 +34,26 @@ class Question extends React.Component {
       } else {
         this.setState({
           timer: timer - 1,
+        }, () => {
+          if (timer === 1) {
+            this.setState({
+              hasStylesBtns: true,
+            });
+          }
         });
       }
     }, ONE_SECOND);
   }
 
-  handleClickAnswer = ({ target: { value: index } }) => {
-    const { timer, randomCorrectIndex } = this.state;
+  handleClickAnswer = ({ target: { value: clickedIndex } }, correctIndex) => {
+    const { timer } = this.state;
     const { dispatchSetScore, question: { difficulty } } = this.props;
     const difficultyPoints = { hard: 3, medium: 2, easy: 1 };
 
     // para o timer
     clearInterval(interval);
 
-    if (index === randomCorrectIndex) {
+    if (Number(clickedIndex) === correctIndex) {
       // set o score se acertou no redux + Assertion +1
       dispatchSetScore(timer, difficultyPoints[difficulty]);
     }
@@ -56,7 +61,7 @@ class Question extends React.Component {
     this.setState({
       isBtnNextVisible: true,
       hasStylesBtns: true,
-      clickedAnswerIndex: index,
+      clickedAnswerIndex: clickedIndex,
     });
   }
 
@@ -68,7 +73,8 @@ class Question extends React.Component {
       this.setState({
         isBtnNextVisible: false,
         hasStylesBtns: false,
-        timer: 30,
+        timer: TIMER_SEC,
+        randomCorrectIndex: Math.floor(Math.random() * ANSWERS_ARRAY_SIZE),
       }, this.startTimer);
     } else {
       // quando chegar na ultima e clickar em prox sera redirecionado para feedback
@@ -89,12 +95,12 @@ class Question extends React.Component {
     answersList.splice(randomCorrectIndex, 0, correct);
     return answersList.map((answer, index) => (
       <button
+        onClick={ (event) => this.handleClickAnswer(event, randomCorrectIndex) }
         className={ (hasStylesBtns)
           ? this.setStylesQuestions((index === randomCorrectIndex),
             (index === Number(clickedAnswerIndex)))
           : 'answer' }
         type="button"
-        onClick={ this.handleClickAnswer }
         disabled={ timer < 1 || isBtnNextVisible }
         key={ index }
         value={ index }
@@ -109,7 +115,7 @@ class Question extends React.Component {
 
   renderBoolAnswers(correct) {
     const answersList = ['True', 'False'];
-    const { timer, hasStylesBtns, isBtnNextVisible } = this.state;
+    const { timer, hasStylesBtns, isBtnNextVisible, clickedAnswerIndex } = this.state;
 
     return (
       <>
@@ -118,12 +124,15 @@ class Question extends React.Component {
             <button
               type="button"
               key={ index }
-              onClick={ this.handleClickAnswer }
+              onClick={ (event) => (
+                this.handleClickAnswer(event, answersList.indexOf(correct))
+              ) }
               className={ (hasStylesBtns)
-                ? this.setStylesQuestions((answer === correct))
+                ? this.setStylesQuestions((answer === correct),
+                  (index === Number(clickedAnswerIndex)))
                 : 'answer' }
               disabled={ timer < 1 || isBtnNextVisible }
-              value={ (answer === correct) }
+              value={ index }
               data-testid={ answer === correct
                 ? CORRECT_ANSWER
                 : 'wrong-answer-0' }
@@ -166,8 +175,8 @@ class Question extends React.Component {
       <main className="Question">
         <section className="question-container">
           {this.renderQuestion(correctAnswer, category, questionText, cleanQuestionText)}
-          <div className="timer">
-            { timer }
+          <div className={ `timer ${timer <= TIMER_ENDING && ' timer-ending'}` }>
+            { `${timer}'` }
           </div>
         </section>
 
@@ -178,7 +187,7 @@ class Question extends React.Component {
             ? this.renderMultipleAnswers(correctAnswer, incorrectAnswers)
             : this.renderBoolAnswers(correctAnswer)}
           {
-            isBtnNextVisible && (
+            (isBtnNextVisible || timer < 1) && (
               <button
                 className="next-button"
                 onClick={ this.handleClickNextQuestion }

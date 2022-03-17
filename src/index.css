@@ -1,5 +1,6 @@
 body {
   background-color: #c5c7c4;
+  background-image: url('./images/tile_background.png');
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

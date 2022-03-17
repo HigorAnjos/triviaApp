@@ -16,7 +16,7 @@
   height: 100%;
   justify-content: center;
   padding: 10px;
-  width: 50%;
+  width: 60%;
 }
 
 .rotated-card-1 {
@@ -24,7 +24,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 4px 0 black;
   margin: auto;
-  min-height: 70%;
+  min-height: 75%;
   transform: rotate(2deg);
   width: 85%;
 }
@@ -57,12 +57,13 @@
   background-color: #c9c9c9;
   border-bottom: 3px solid black;
   border-spacing: 20 px;
+  border-top: 1px solid #b4b4b4;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   font-size: 30px;
   font-weight: 800;
   height: 25%;
-  padding: 10px;
+  padding: 18px 10px;
   width: 100%;
 }
 
@@ -70,6 +71,25 @@
   font-size: 24px;
   height: 75%;
   line-height: 30px;
+  padding: 10px 20px;
+}
+
+.timer {
+  background-color: #c5c7c3;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px 0 black;
+  font-size: 20px;
+  font-weight: 800;
+  margin: auto;
+  padding: 15px;
+  text-align: center;
+  transition-duration: 0.4s;
+  width: 80px;
+}
+
+.timer-ending {
+  color: rgb(219, 31, 31);
+  font-size: 30px;
   padding: 10px;
 }
 
@@ -85,7 +105,7 @@
   display: flex;
   flex-direction: column;
   padding: 5px;
-  width: 50%;
+  width: 40%;
 }
 
 .answer {
@@ -138,15 +158,19 @@
 
 .next-button {
   background-color: #c5c7c3;
-  margin-top: 15px;
+  border: 3px solid#c5c7c3;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 black;
+  font-size: 15px;
+  font-weight: 800;
+  margin: 15px 12px;
+  padding: 8px;
+  transition-duration: 0.4s;
+  width: 30%;
 }
 
-.timer {
-  background-color: #c5c7c3;
-  border-radius: 10px;
-  box-shadow: 0 4px 4px 0 black;
-  font-weight: 800;
-  margin: auto;
-  padding: 15px;
-  text-align: center;
+.next-button:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.1);
 }
