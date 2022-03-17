@@ -1,16 +1,5 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-main {
-
-  /* 150: tamanho do header, 50 e 50: margin de cima e baixo */
-  height: calc(100vh - 150px - 50px - 50px);
-}
-
 .loading {
+  height: calc(100vh - 150px - 50px - 50px);
   align-items: center;
   color: #344e41;
   display: flex;
