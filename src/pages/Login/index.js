@@ -1,8 +1,8 @@
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import avatar from '../../images/img_avatar2.png';
 import { fetchToken, setUser } from '../../redux/actions';
-import avatar from './img_avatar2.png';
 import './style.css';
 
 class Login extends Component {
