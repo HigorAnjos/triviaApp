@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './style.css';
-
 import Header from '../../components/Header';
-import { fetchToken, fetchTrivia } from '../../redux/actions';
 import Question from '../../components/Question';
+import { fetchToken, fetchTrivia } from '../../redux/actions';
 import { getToken } from '../../services/localstorage';
+import './style.css';
 
 export class Trivia extends Component {
   state = {
@@ -41,7 +40,7 @@ export class Trivia extends Component {
     const isLoading = questions.length === 0;
 
     return (
-      <div>
+      <>
         <Header />
 
         {isLoading
@@ -57,7 +56,7 @@ export class Trivia extends Component {
               history={ history }
             />
           )}
-      </div>
+      </>
     );
   }
 }

@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import getGravatarUrl from '../../services/gravatar';
 import './style.css';
 
@@ -9,7 +9,7 @@ class Header extends React.Component {
     const { name, score, gravatarEmail } = this.props;
 
     return (
-      <header>
+      <header className="Header">
         <img
           className="player-img"
           src={ getGravatarUrl(gravatarEmail) }
