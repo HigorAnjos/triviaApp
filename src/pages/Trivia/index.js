@@ -65,7 +65,7 @@ export class Trivia extends Component {
 Trivia.propTypes = {
   token: PropTypes.string.isRequired,
   responseCode: PropTypes.number.isRequired,
-  questions: PropTypes.shape([]).isRequired,
+  questions: PropTypes.arrayOf(PropTypes.object).isRequired,
   dispatchFetchTrivia: PropTypes.func.isRequired,
   dispatchFetchToken: PropTypes.func.isRequired,
   history: PropTypes.shape({

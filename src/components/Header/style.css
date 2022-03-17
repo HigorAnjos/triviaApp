@@ -9,7 +9,7 @@ header {
   border-bottom-right-radius: 15px;
   box-shadow: 0 4px 8px 0 rgb(92, 92, 92);
   display: flex;
-  height: 150px;
+  height: 130px;
   justify-content: space-around;
 }
 
