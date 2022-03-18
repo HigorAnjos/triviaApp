@@ -68,7 +68,7 @@ export class Configuration extends Component {
     return (
       <main className="Configuration">
         <section className="title-container">
-          <h1 className="config-title">
+          <h1 className="config-title" data-testid="settings-title">
             Configurações
           </h1>
           <button
