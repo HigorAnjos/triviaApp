@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import avatar from '../../images/img_avatar2.png';
+import svgAvatar from '../../images/svg_avatar.svg';
 import { fetchToken, setUser } from '../../redux/actions';
 import './style.css';
 
@@ -38,7 +38,7 @@ class Login extends Component {
           className="container-form-box"
         >
           <header className="container-form-header">
-            <img src={ avatar } alt="Avatar" className="img-avatar" />
+            <img src={ svgAvatar } alt="svg_avatar" className="svg_avatar" />
           </header>
 
           <main className="container-form-main">
@@ -101,17 +101,9 @@ class Login extends Component {
             >
               Configurações
             </button>
-
-            <section className="container-form-section-remember">
-              <input
-                id="remember"
-                type="checkbox"
-                name="remember"
-                className="container-form-section-remember-input"
-              />
-              Lembrar-me
-            </section>
           </main>
+          <footer className="container-form-footer" />
+
         </form>
       </div>
     );
