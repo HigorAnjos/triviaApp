@@ -14,6 +14,10 @@ export const TRIVIA_FETCHING = 'TRIVIA_FETCHING';
 export const TRIVIA_SUCCESS = 'TRIVIA_SUCCESS';
 export const TRIVIA_ERROR = 'TRIVIA_ERROR';
 
+export const SET_CATEGORY = 'SET_CATEGORY';
+export const SET_DIFFICULTY = 'SET_DIFFICULTY';
+export const SET_TYPE = 'SET_TYPE';
+
 // ACTIONS CREATORS
 
 export const setUser = (user) => ({
@@ -68,3 +72,18 @@ export const fetchTrivia = (token) => async (dispatch) => {
     dispatch(errorFetchingTrivia(error));
   }
 };
+
+export const setCategory = (category) => ({
+  type: SET_CATEGORY,
+  payload: category,
+});
+
+export const setDifficulty = (difficulty) => ({
+  type: SET_DIFFICULTY,
+  payload: difficulty,
+});
+
+export const setType = (type) => ({
+  type: SET_TYPE,
+  payload: type,
+});
