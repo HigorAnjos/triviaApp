@@ -1,77 +1,65 @@
 .container-form {
   align-items: center;
-  background-color: rgb(144, 235, 238);
+  background-color: #616161;
   display: flex;
-  height: 80vh;
   justify-content: center;
   margin: auto;
+  max-height: 80vh;
   max-width: 80vw;
+  padding: 20px;
 }
 
-/*
 .container-form-box {
-  background-color: lightgreen;
-  min-height: 98%;
-  min-width: 99%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 5% auto;
+  border: 3px solid #3c3c3c;
 }
-.container-form-header {
-  background-color: rgb(210, 238, 144);
-  flex-grow: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.img-avatar {
-  width: 40%;
-  border-radius: 50%;
-} */
 
-/*
+.container-form-header {
+  margin: 24px 0 12px;
+  text-align: center;
+}
+
+.svg_avatar {
+  border-radius: 50%;
+  width: 30%;
+}
+
 .container-form-main {
-  background-color: rgb(208, 144, 238);
-  flex-grow: 7;
+  padding: 16px;
+  text-align: center;
 }
-.container-form-main-label1 {
-  background-color: rgb(238, 144, 144);
+
+.container-form-main-label1-input1, .container-form-main-label2-input1 {
+  background-color: whitesmoke;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  margin: 8px 0;
+  padding: 12px 20px;
+  width: 100%;
 }
-.container-form-main-label1-input1 {
-  background-color: rgb(238, 144, 210);
+
+.container-form-main-button1, .container-form-main-button2 {
+  background-color: #1e8ac8;
+  border: 3px solid#1e8ac8;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 black;
+  color: whitesmoke;
+  font-size: 15px;
+  font-weight: 800;
+  margin: 15px 12px;
+  padding: 8px;
+  transition-duration: 0.4s;
+  width: 40%;
 }
-.container-form-main-label2 {
-  background-color: rgb(238, 232, 144);
+
+.container-form-main-button1:hover, .container-form-main-button2:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.1);
 }
-.container-form-main-label2-input1 {
-  background-color: rgb(0, 37, 202);
-}
-.container-form-main-button1 {
-  background-color: rgb(146, 0, 127);
-}
+
 .disabled {
-  opacity: 0.75;
   cursor: not-allowed;
-  background-color: rgb(158, 0, 40);
+  opacity: 0.75;
 }
-.container-form-main-button2 {
-  background-color: rgb(178, 228, 0);
-}
-.container-form-section-remember {
-  background-color: rgb(56, 87, 0);
-}
-.container-form-section-remember-input {
-  background-color: rgb(0, 255, 0);
-}
-.container-form-footer {
-  background-color: rgb(0, 8, 0);
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.container-form-footer-a {
-  background-color: rgb(107, 0, 107);
-} */
