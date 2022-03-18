@@ -76,7 +76,7 @@ class Login extends Component {
             <button
               className={
                 isDisabledButton
-                  ? 'container-form-main-button1" disabled'
+                  ? 'container-form-main-button1 disabled'
                   : 'container-form-main-button1'
               }
               id="play-Button"

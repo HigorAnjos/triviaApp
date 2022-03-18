@@ -38,13 +38,12 @@
   width: 100%;
 }
 
-.container-form-main-button1, .container-form-main-button2, .disabled {
+.container-form-main-button1, .container-form-main-button2 {
   background-color: #1e8ac8;
-  border: 1px solid#000000;
-  border-radius: 10px;
+  border: 3px solid#1e8ac8;
+  border-radius: 5px;
   box-shadow: 0 2px 2px 0 black;
   color: whitesmoke;
-  cursor: pointer;
   font-size: 15px;
   font-weight: 800;
   margin: 15px 12px;
@@ -52,6 +51,13 @@
   transition-duration: 0.4s;
   width: 40%;
 }
+
+.container-form-main-button1:hover, .container-form-main-button2:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.1);
+}
+
 
 .disabled {
   cursor: not-allowed;
