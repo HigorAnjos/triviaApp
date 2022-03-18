@@ -19,11 +19,14 @@ const typeObj = [
 ];
 
 export class Configuration extends Component {
-  state = {
-    categories: [],
-    category: '',
-    difficulty: '',
-    type: '',
+  constructor({ category, difficulty, type }) {
+    super();
+    this.state = {
+      categories: [],
+      category,
+      difficulty,
+      type,
+    };
   }
 
   async componentDidMount() {
@@ -126,6 +129,9 @@ export class Configuration extends Component {
 }
 
 Configuration.propTypes = {
+  category: PropTypes.string.isRequired,
+  difficulty: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
@@ -134,13 +140,16 @@ Configuration.propTypes = {
   dispatchSetType: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  category: state.configs.category,
+  difficulty: state.configs.difficulty,
+  type: state.configs.type,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   dispatchSetCategory: (category) => dispatch(setCategory(category)),
   dispatchSetDifficulty: (difficulty) => dispatch(setDifficulty(difficulty)),
   dispatchSetType: (type) => dispatch(setType(type)),
 });
 
-export default connect(null, mapDispatchToProps)(Configuration);
-
-// https://opentdb.com/api.php?amount=10&category=11&difficulty=hard&type=boolean
-// https://opentdb.com/api.php?amount=5&category=&difficulty=&type=
+export default connect(mapStateToProps, mapDispatchToProps)(Configuration);

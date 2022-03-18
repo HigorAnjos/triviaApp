@@ -63,15 +63,19 @@ const errorFetchingTrivia = (error) => ({
   payload: error,
 });
 
-export const fetchTrivia = (token) => async (dispatch) => {
-  dispatch(startFetchingTrivia());
-  try {
-    const trivia = await fetchAPI(`https://opentdb.com/api.php?amount=5&token=${token}`);
-    dispatch(successFetchingTrivia(trivia));
-  } catch (error) {
-    dispatch(errorFetchingTrivia(error));
+export const fetchTrivia = (token, { category, difficulty, type }) => (
+  async (dispatch) => {
+    dispatch(startFetchingTrivia());
+    const url = `https://opentdb.com/api.php?amount=5&token=${token}&category=${category}`
+      + `&difficulty=${difficulty}&type=${type}`;
+    try {
+      const trivia = await fetchAPI(url);
+      dispatch(successFetchingTrivia(trivia));
+    } catch (error) {
+      dispatch(errorFetchingTrivia(error));
+    }
   }
-};
+);
 
 export const setCategory = (category) => ({
   type: SET_CATEGORY,

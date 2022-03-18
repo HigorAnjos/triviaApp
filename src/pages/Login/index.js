@@ -2,7 +2,7 @@ import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import avatar from '../../images/img_avatar2.png';
-import { fetchToken, setUser } from '../../redux/actions';
+import { fetchToken, resetGame, setUser } from '../../redux/actions';
 import './style.css';
 
 class Login extends Component {
@@ -10,6 +10,11 @@ class Login extends Component {
     gravatarEmail: '',
     name: '',
   };
+
+  componentDidMount() {
+    const { dispatchResetGame } = this.props;
+    dispatchResetGame();
+  }
 
   componentDidUpdate() {
     const { token, history } = this.props;
@@ -122,6 +127,7 @@ Login.propTypes = {
   token: propTypes.string.isRequired,
   dispatchSetUser: propTypes.func.isRequired,
   dispatchFetchToken: propTypes.func.isRequired,
+  dispatchResetGame: propTypes.func.isRequired,
   history: propTypes.shape({
     push: propTypes.func,
   }).isRequired,
@@ -134,6 +140,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   dispatchSetUser: (user) => dispatch(setUser(user)),
   dispatchFetchToken: () => dispatch(fetchToken()),
+  dispatchResetGame: () => dispatch(resetGame()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
