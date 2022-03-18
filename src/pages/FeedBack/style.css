@@ -1,0 +1,60 @@
+.FeedBack {
+  align-items: center;
+  background-color: #616161;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgb(99, 97, 97);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 150px - 50px - 50px);
+  justify-content: space-around;
+  margin: 50px auto;
+  width: 50vw;
+}
+
+.feedback-container {
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 black;
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  justify-content: space-evenly;
+  padding: 20px;
+  width: 90%;
+}
+
+.fb-h1 {
+  font-size: 45px;
+  font-weight: 800;
+}
+
+.fb-h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fb-buttons-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.fb-buttons-container button {
+  background-color: #c5c7c3;
+  border: 3px solid#c5c7c3;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 black;
+  font-size: 15px;
+  font-weight: 800;
+  margin: 15px 12px;
+  padding: 8px;
+  transition-duration: 0.4s;
+  width: 30%;
+}
+
+.fb-buttons-container button:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.1);
+}
