@@ -1,14 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType, string, number } from 'prop-types';
 import Header from '../../components/Header';
 import { resetGame } from '../../redux/actions';
 import { saveRanking } from '../../services/localstorage';
+import './style.css';
 
 class FeedBack extends React.Component {
   componentDidMount() {
     const { player } = this.props;
-    saveRanking(player);
+    if (player.name !== '') {
+      saveRanking(player);
+    }
   }
 
   componentWillUnmount() {
@@ -21,9 +24,9 @@ class FeedBack extends React.Component {
     const THREE_ASSERTIONS = 3;
 
     if (assertions < THREE_ASSERTIONS) {
-      return (<h1 data-testid="feedback-text">Could be better...</h1>);
+      return (<h1 className="fb-h1" data-testid="feedback-text">Could be better...</h1>);
     }
-    return (<h1 data-testid="feedback-text">Well Done!</h1>);
+    return (<h1 className="fb-h1" data-testid="feedback-text">Well Done!</h1>);
   }
 
   redirectToLogin = () => {
@@ -41,32 +44,37 @@ class FeedBack extends React.Component {
     return (
       <>
         <Header />
-        <main>
-          {this.feedback()}
-          <h2>
-            Voce acertou
-            <span data-testid="feedback-total-question">{` ${assertions} `}</span>
-            quetões!
-          </h2>
-          <h2>
-            Um total de
-            <span data-testid="feedback-total-score">{` ${score} `}</span>
-            pontos.
-          </h2>
-          <button
-            type="button"
-            data-testid="btn-play-again"
-            onClick={ this.redirectToLogin }
-          >
-            Jogar novamente
-          </button>
-          <button
-            type="button"
-            data-testid="btn-ranking"
-            onClick={ this.redirectToRanking }
-          >
-            Ver Ranking
-          </button>
+        <main className="FeedBack">
+          <section className="feedback-container">
+            {this.feedback()}
+            <h2 className="fb-h2">
+              Voce acertou
+              <span data-testid="feedback-total-question">{` ${assertions} `}</span>
+              questões!
+            </h2>
+            <h2 className="fb-h2">
+              Um total de
+              <span data-testid="feedback-total-score">{` ${score} `}</span>
+              pontos.
+            </h2>
+          </section>
+          <section className="fb-buttons-container">
+            <button
+              className="play-again-button"
+              type="button"
+              data-testid="btn-play-again"
+              onClick={ this.redirectToLogin }
+            >
+              Jogar novamente
+            </button>
+            <button
+              type="button"
+              data-testid="btn-ranking"
+              onClick={ this.redirectToRanking }
+            >
+              Ver Ranking
+            </button>
+          </section>
         </main>
       </>
     );
@@ -80,7 +88,7 @@ FeedBack.propTypes = {
     push: PropTypes.func.isRequired,
   }).isRequired,
   dispatchResetGame: PropTypes.func.isRequired,
-  player: PropTypes.shape({}).isRequired,
+  player: PropTypes.objectOf(oneOfType([string, number])).isRequired,
 };
 
 const mapStateToProps = (state) => ({

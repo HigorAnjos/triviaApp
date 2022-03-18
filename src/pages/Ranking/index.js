@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getPrevRanking } from '../../services/localstorage';
+import { getRanking } from '../../services/localstorage';
+import './style.css';
 
 export class Ranking extends Component {
   constructor() {
@@ -12,7 +13,7 @@ export class Ranking extends Component {
 
   componentDidMount() {
     this.setState({
-      storage: getPrevRanking(),
+      storage: getRanking(),
     });
   }
 
@@ -34,29 +35,37 @@ export class Ranking extends Component {
       }
       return 0;
     });
-    return storageSort.map(({ name, score, picture }, index) => (
-      <div key={ index }>
-        <img src={ picture } alt="imagem de perfil do jogador" />
-        <h1 data-testid={ `player-name-${index}` }>{ name }</h1>
-        <h2 data-testid={ `player-score-${index}` }>{ score }</h2>
-      </div>
-    ));
+    return (
+      <section className="ranking-container">
+        {storageSort.map(({ name, score, picture }, index) => (
+          <div className="rank-card" key={ index }>
+            <img className="rank-img" src={ picture } alt="imagem de perfil do jogador" />
+            <h1 className="rank-name" data-testid={ `player-name-${index}` }>
+              { name }
+            </h1>
+            <h2 className="rank-score" data-testid={ `player-score-${index}` }>
+              { score }
+            </h2>
+          </div>
+        ))}
+      </section>
+    );
   }
 
   render() {
     return (
-      <main>
-        <h1 data-testid="ranking-title">Ranking</h1>
-        <a href="/">
-          {/* bug muito loco no input quando usa a funcao */}
+      <main className="Ranking">
+        <section className="title-container">
+          <h1 className="ranking-title" data-testid="ranking-title">Ranking</h1>
           <button
+            className="home-button"
             data-testid="btn-go-home"
             type="button"
-            // onClick={ this.handleClick }
+            onClick={ this.handleClick }
           >
-            inicio
+            Início
           </button>
-        </a>
+        </section>
         {
           this.rankingList()
         }
