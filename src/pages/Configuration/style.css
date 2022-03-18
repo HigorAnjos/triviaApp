@@ -1,4 +1,4 @@
-.Ranking {
+.Configuration {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@
   width: 90%;
 }
 
-.ranking-title {
+.config-title {
   background-color: whitesmoke;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 black;
@@ -46,7 +46,7 @@
   transform: scale(1.1);
 }
 
-.ranking-container {
+.config-container {
   align-items: center;
   background-color: #616161;
   border-radius: 25px;
@@ -54,59 +54,26 @@
   display: flex;
   flex-direction: column;
   height: 65%;
-  justify-content: center;
+  justify-content: space-evenly;
   margin: auto;
   overflow-y: auto;
   padding: 10px;
   width: 80%;
 }
 
-.rank-card {
-  align-items: center;
+.config-label {
   background-color: whitesmoke;
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 black;
+  box-shadow: 0 2px 2px 0 black;
   display: flex;
+  font-size: 25px;
+  font-weight: 800;
   justify-content: space-between;
-  margin: 10px;
-  width: 85%;
+  padding: 25px 50px;
+  width: 70%;
 }
 
-.rank-img {
-  border-bottom-left-radius: 10px;
-  border-right: 4px solid black;
-  border-top-left-radius: 10px;
-  height: 80px;
-  width: 80px;
-}
-
-.rank-score {
-  align-items: center;
-  border-left: 4px solid black;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  width: 80px;
-}
-
-::-webkit-scrollbar {
-  margin-right: 10px;
-  width: 8px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-  box-shadow: inset 0 0 5px grey;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: black;
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #3c3c3c;
+.config-select {
+  border-radius: 5px;
+  width: 50%;
 }

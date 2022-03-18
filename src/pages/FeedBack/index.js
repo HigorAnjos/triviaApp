@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes, { oneOfType, string, number } from 'prop-types';
 import Header from '../../components/Header';
-import { resetGame } from '../../redux/actions';
 import { saveRanking } from '../../services/localstorage';
 import './style.css';
 
@@ -12,11 +11,6 @@ class FeedBack extends React.Component {
     if (player.name !== '') {
       saveRanking(player);
     }
-  }
-
-  componentWillUnmount() {
-    const { dispatchResetGame } = this.props;
-    dispatchResetGame();
   }
 
   feedback = () => {
@@ -87,7 +81,6 @@ FeedBack.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
-  dispatchResetGame: PropTypes.func.isRequired,
   player: PropTypes.objectOf(oneOfType([string, number])).isRequired,
 };
 
@@ -97,8 +90,4 @@ const mapStateToProps = (state) => ({
   player: state.player,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatchResetGame: () => dispatch(resetGame()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(FeedBack);
+export default connect(mapStateToProps, null)(FeedBack);

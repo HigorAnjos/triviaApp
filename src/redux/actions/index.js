@@ -14,6 +14,10 @@ export const TRIVIA_FETCHING = 'TRIVIA_FETCHING';
 export const TRIVIA_SUCCESS = 'TRIVIA_SUCCESS';
 export const TRIVIA_ERROR = 'TRIVIA_ERROR';
 
+export const SET_CATEGORY = 'SET_CATEGORY';
+export const SET_DIFFICULTY = 'SET_DIFFICULTY';
+export const SET_TYPE = 'SET_TYPE';
+
 // ACTIONS CREATORS
 
 export const setUser = (user) => ({
@@ -59,12 +63,32 @@ const errorFetchingTrivia = (error) => ({
   payload: error,
 });
 
-export const fetchTrivia = (token) => async (dispatch) => {
-  dispatch(startFetchingTrivia());
-  try {
-    const trivia = await fetchAPI(`https://opentdb.com/api.php?amount=5&token=${token}`);
-    dispatch(successFetchingTrivia(trivia));
-  } catch (error) {
-    dispatch(errorFetchingTrivia(error));
+export const fetchTrivia = (token, { category, difficulty, type }) => (
+  async (dispatch) => {
+    dispatch(startFetchingTrivia());
+    const url = (category + difficulty + type === '')
+      ? `https://opentdb.com/api.php?amount=5&token=${token}`
+      : `https://opentdb.com/api.php?amount=5&token=${token}&category=${category}&difficulty=${difficulty}&type=${type}`;
+    try {
+      const trivia = await fetchAPI(url);
+      dispatch(successFetchingTrivia(trivia));
+    } catch (error) {
+      dispatch(errorFetchingTrivia(error));
+    }
   }
-};
+);
+
+export const setCategory = (category) => ({
+  type: SET_CATEGORY,
+  payload: category,
+});
+
+export const setDifficulty = (difficulty) => ({
+  type: SET_DIFFICULTY,
+  payload: difficulty,
+});
+
+export const setType = (type) => ({
+  type: SET_TYPE,
+  payload: type,
+});

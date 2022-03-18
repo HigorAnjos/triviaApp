@@ -13,18 +13,19 @@ export class Trivia extends Component {
   }
 
   componentDidMount() {
-    const { dispatchFetchTrivia } = this.props;
+    const { dispatchFetchTrivia, configuration } = this.props;
     const token = getToken();
 
-    dispatchFetchTrivia(token);
+    dispatchFetchTrivia(token, configuration);
   }
 
   componentDidUpdate({ token: prevToken }) {
-    const { responseCode, token, dispatchFetchToken, dispatchFetchTrivia } = this.props;
+    const { responseCode, token, dispatchFetchToken,
+      dispatchFetchTrivia, configuration } = this.props;
     if (responseCode && prevToken === token) {
       dispatchFetchToken();
     } else if (responseCode) {
-      dispatchFetchTrivia(token);
+      dispatchFetchTrivia(token, configuration);
     }
   }
 
@@ -65,6 +66,7 @@ Trivia.propTypes = {
   token: PropTypes.string.isRequired,
   responseCode: PropTypes.number.isRequired,
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  configuration: PropTypes.objectOf(PropTypes.string).isRequired,
   dispatchFetchTrivia: PropTypes.func.isRequired,
   dispatchFetchToken: PropTypes.func.isRequired,
   history: PropTypes.shape({
@@ -76,10 +78,13 @@ const mapStateToProps = (state) => ({
   token: state.token,
   questions: state.trivia.questions,
   responseCode: state.trivia.responseCode,
+  configuration: state.configs,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchFetchTrivia: (token) => dispatch(fetchTrivia(token)),
+  dispatchFetchTrivia: (token, configuration) => (
+    dispatch(fetchTrivia(token, configuration))
+  ),
   dispatchFetchToken: () => dispatch(fetchToken()),
 });
 
