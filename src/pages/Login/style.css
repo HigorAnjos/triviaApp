@@ -6,6 +6,7 @@
   margin: auto;
   max-height: 80vh;
   max-width: 80vw;
+  padding: 20px;
 }
 
 .container-form-box {
@@ -57,7 +58,6 @@
   color: black;
   transform: scale(1.1);
 }
-
 
 .disabled {
   cursor: not-allowed;
