@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType, string, number } from 'prop-types';
 import Header from '../../components/Header';
 import { resetGame } from '../../redux/actions';
 import { saveRanking } from '../../services/localstorage';
@@ -9,7 +9,9 @@ import './style.css';
 class FeedBack extends React.Component {
   componentDidMount() {
     const { player } = this.props;
-    saveRanking(player);
+    if (player.name !== '') {
+      saveRanking(player);
+    }
   }
 
   componentWillUnmount() {
@@ -48,7 +50,7 @@ class FeedBack extends React.Component {
             <h2 className="fb-h2">
               Voce acertou
               <span data-testid="feedback-total-question">{` ${assertions} `}</span>
-              quetões!
+              questões!
             </h2>
             <h2 className="fb-h2">
               Um total de
@@ -86,7 +88,7 @@ FeedBack.propTypes = {
     push: PropTypes.func.isRequired,
   }).isRequired,
   dispatchResetGame: PropTypes.func.isRequired,
-  player: PropTypes.shape({}).isRequired,
+  player: PropTypes.objectOf(oneOfType([string, number])).isRequired,
 };
 
 const mapStateToProps = (state) => ({
