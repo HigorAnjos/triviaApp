@@ -25,7 +25,7 @@ class FeedBack extends React.Component {
 
   redirectToLogin = () => {
     const { history } = this.props;
-    history.push('/');
+    history.push('/trivia');
   }
 
   redirectToRanking = () => {
