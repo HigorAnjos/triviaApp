@@ -11,7 +11,7 @@ export default function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component={ Login } />
+        <Route exact path="/triviaApp" component={ Login } />
         <Route path="/Trivia" component={ Trivia } />
         <Route path="/Ranking" component={ Ranking } />
         <Route path="/Configuration" component={ Configuration } />
