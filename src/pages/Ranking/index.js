@@ -19,7 +19,7 @@ export class Ranking extends Component {
 
   handleClick = () => {
     const { history } = this.props;
-    history.push('/triviaApp');
+    history.push('/');
   }
 
   rankingList = () => {
