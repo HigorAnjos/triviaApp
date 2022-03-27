@@ -59,7 +59,7 @@ export class Configuration extends Component {
 
   handleClick = () => {
     const { history } = this.props;
-    history.push('/');
+    history.push('/triviaApp');
   }
 
   render() {
