@@ -1,4 +1,5 @@
 # Jogo Trivia
+![](https://img.shields.io/github/license/HigorAnjos/triviaApp)
 
 Trabalho desenvolvido na trybe com finalidade didatica, feito em grupo.
 
