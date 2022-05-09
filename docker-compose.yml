@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  node:
+    image: node:16
+    restart: always
+    working_dir: /app
+    volumes:
+      - ./:/app
+    container_name: trivia_app
+    ports:
+      - 3000:3000
+    CMD: ['npm install']
+    RUN: ['npm start']
