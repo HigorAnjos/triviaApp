@@ -10,3 +10,4 @@ services:
     container_name: trivia_app
     ports:
       - 3000:3000
+# docker run -i -t image_name
