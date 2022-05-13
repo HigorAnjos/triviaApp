@@ -12,7 +12,7 @@
 </p>
 
 ![](https://img.shields.io/github/license/HigorAnjos/triviaApp)
-
+![GitHub issues](https://img.shields.io/github/issues/higoranjos/triviaApp?style=social)
 ---
 
 ### Telas
