@@ -3,12 +3,13 @@
 <p align="center">Esse projeto é uma jogo de perguntas e respostas.</p>
 
 <p align="center">
- <a href="#features">Features</a> •
- <a href="#Node">Node</a> •
- <a href="#rodando-o-mobile">Rodando a aplicação</a> •
- <a href="#Docker">Docker</a> •
- <a href="#tecnologias">Tecnologias</a> •
- <a href="#autor">Autor</a>
+  <a href="#GitHub-Pages">GitHub-Pages</a> •
+  <a href="#Node">Node</a> •
+  <a href="#Docker">Docker</a> •
+  <a href="#Docker-Compose">Docker-Compose</a> •
+  <a href="#Tecnologias">Tecnologias</a> •
+  <a href="#Contribuicao">Contribuicao</a> •
+  <a href="#Autor">Autor</a>
 </p>
 
 [![](https://circleci.com/gh/HigorAnjos/triviaApp.svg?style=svg)](https://app.circleci.com/pipelines/github/HigorAnjos/triviaApp)
@@ -20,125 +21,168 @@
 ### Telas
 
 <h1 align="center">
-  <img alt="WeatherApp" title="WeatherApp" src="./triviaApp.png" height="425" />
+  <img alt="WeatherApp" title="WeatherApp" src="./trivia.gif" />
   <!-- <img alt="WeatherApp" title="Persistência do tema e alerta de erro de cidade não encontrada" src="./github/WeatherAppThemePersistAndCityNotFound.gif" height="425" /> -->
 </h1>
 
-### Sonar Quality
+#### Sonar Code Quality
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=bugs)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=security_rating)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=code_smells)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=ncloc)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=alert_status)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+
+---
+
+## GitHub-Pages
+
+O projeto esta disponivel online no
+[Github Pages](https://higoranjos.github.io/triviaApp/)
 
 ---
 
 ## Node
 
-
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
 
-
-Você também vai precisar configurar o ambiente para desenvolvimento mobile no seu PC: [Configurando Ambiente React Native](https://react-native.rocketseat.dev/).
-
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 ---
 
-### Rodando o Trivia
+## Rodando com Node
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/ARTHURPC03/WeatherApp
+$ git clone git@github.com:HigorAnjos/triviaApp.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd WeatherApp
-
-# Faça uma cópia de '.env.example' para '.env'
-# Coloque sua credencial da API de clima (Weather API)
-$ cp .env.example .env
+$ cd triviaApp
 
 # Instale as dependências
-$ yarn
+$ npm install
 
-# Se você for emular com o Android, execute este comando
-# Certifique-se de ter o emulador aberto
-$ yarn android
-
-# Se você for emular com ios, execute este comando
-$ yarn ios
+# iniciar o projeto
+$ npm start
 ```
 
+Caso a pagina nao abra automaticamente, a aplicação estara disponivel em ```http://localhost:3000/triviaApp```
 
+---
 ## Docker
 
 ### Pré-requisitos
-
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+[Git](https://git-scm.com), [Docker](https://www.docker.com/).
 
-
-Você também vai precisar configurar o ambiente para desenvolvimento mobile no seu PC: [Configurando Ambiente React Native](https://react-native.rocketseat.dev/).
-
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
-
----
-
-### Rodando o Trivia
+## Rodando com Docker
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/ARTHURPC03/WeatherApp
+$ git clone git@github.com:HigorAnjos/triviaApp.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd WeatherApp
+$ cd triviaApp
 
-# Faça uma cópia de '.env.example' para '.env'
-# Coloque sua credencial da API de clima (Weather API)
-$ cp .env.example .env
+# Criando imagem node
+$ docker build -t trivia .
 
-# Instale as dependências
-$ yarn
-
-# Se você for emular com o Android, execute este comando
-# Certifique-se de ter o emulador aberto
-$ yarn android
-
-# Se você for emular com ios, execute este comando
-$ yarn ios
+# Rodando o container da imagem criada.
+$ docker run -i -t -p 3000:3000 trivia
 ```
 
+Para as proximas vezes nao sera necessario criar a imagem novamente, apenas rodar o container.
 
+```bash
+# Rodando o container da imagem criada.
+$ docker run -i -t -p 3000:3000 trivia
+```
+
+A aplicação estara disponivel em ```http://localhost:3000/triviaApp```
+
+### Removendo a imagem do Docker
+```bash
+# Excluindo a imagem criada pelo docker
+$ docker image rm -f trivia
+```
+
+---
+
+## Docker-Compose
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/install/).
+
+
+## Rodando com o doker-compose
+
+```bash
+# Clone este repositório
+$ docker compose up --build
+```
+Para roda outras vezes nao sera necessario contruir a imagem novamente, apenar roda o container com a imagem:
+
+```bash
+# Clone este repositório
+$ docker compose up
+```
+
+<!-- Caso queira rodar o container sem travar seu termianl:
+```bash
+# Clone este repositório
+$ docker compose up -d
+``` -->
+A aplicação estara disponivel em ```http://localhost:3000/triviaApp```
+
+Parar o container
+```bash
+# Clone este repositório
+$ docker compose down
+```
+
+### Removendo a imagem do Docker
+```bash
+# Excluindo a imagem criada pelo docker
+$ docker image rm -f triviaapp_trivia
+```
+---
 
 ## Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [React Native](https://reactnative.dev/)
-- [Weather API](https://openweathermap.org/api)
 - [Context API](https://pt-br.reactjs.org/docs/context.html)
-- [React Native Geolocation Service](https://github.com/Agontuk/react-native-geolocation-service)
-- [React Navigation](https://reactnavigation.org/)
-- [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
-- [UnForm](https://unform.dev/)
-- [Yup](https://github.com/jquense/yup)
-- [Styled Components](https://styled-components.com/)
-- [Axios](https://github.com/axios/axios)
 - [Eslint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
 - [EditorConfig](https://editorconfig.org/)
 
+<!-- - [TypeScript](https://www.typescriptlang.org/) -->
+<!-- - [React Native](https://reactnative.dev/) -->
+<!-- - [Weather API](https://openweathermap.org/api) -->
+<!-- - [React Native Geolocation Service](https://github.com/Agontuk/react-native-geolocation-service) -->
+<!-- - [React Navigation](https://reactnavigation.org/) -->
+<!-- - [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons) -->
+<!-- - [UnForm](https://unform.dev/) -->
+<!-- - [Yup](https://github.com/jquense/yup) -->
+<!-- - [Styled Components](https://styled-components.com/) -->
+<!-- - [Axios](https://github.com/axios/axios) -->
+<!-- - [Prettier](https://prettier.io/) -->
 
 ---
 
-Trabalho desenvolvido na trybe com finalidade didatica, feito em grupo.
+## Contribuicao
 
-[Gabriel Julio](https://github.com/GJTrybe)
-
+[Gabriel Julio](https://github.com/GJTrybe) |
 [Leonardo Mendonça](https://github.com/leobmend)
 
-[Github Pages](https://higoranjos.github.io/triviaApp/)
+---
+
+# Autor
+
+<img alt="Higor Anjos" title="Higor Anjos" src="https://avatars.githubusercontent.com/u/38214470?v=4" height="100" width="100" />
+
+Made with 💜 by Higor Anjos 👋
+
+[![LinkedIn Badge](https://img.shields.io/badge/-Higor_Anjos-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/higoranjos)](https://www.linkedin.com/in/higoranjos)
