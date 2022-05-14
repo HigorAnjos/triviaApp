@@ -20,7 +20,7 @@
 ### Telas
 
 <h1 align="center">
-  <img alt="WeatherApp" title="WeatherApp" src="./trivia.gif" height="425" />
+  <img alt="WeatherApp" title="WeatherApp" src="./trivia.gif" />
   <!-- <img alt="WeatherApp" title="Persistência do tema e alerta de erro de cidade não encontrada" src="./github/WeatherAppThemePersistAndCityNotFound.gif" height="425" /> -->
 </h1>
 
