@@ -11,8 +11,10 @@
  <a href="#autor">Autor</a>
 </p>
 
-![](https://img.shields.io/github/license/HigorAnjos/triviaApp)
-![GitHub issues](https://img.shields.io/github/issues/higoranjos/triviaApp?style=social)
+[![](https://circleci.com/gh/HigorAnjos/triviaApp.svg?style=svg)](https://app.circleci.com/pipelines/github/HigorAnjos/triviaApp)
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/HigorAnjos/triviaApp?color=%2398cc04&style=flat-square">
+<img alt="GitHub" src="https://img.shields.io/github/license/HigorAnjos/triviaApp?color=%2398cc04&style=flat-square" width="78">
+
 ---
 
 ### Telas
