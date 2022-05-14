@@ -60,48 +60,65 @@ $ npm install
 $ npm start
 ```
 
-Caso a pagina nao abra automaticamente, a aplicação estara disponivel em ```http://localhost:3000/```
+Caso a pagina nao abra automaticamente, a aplicação estara disponivel em ```http://localhost:3000/triviaApp```
 
-## Rodando com Docker -
+---
+## Docker
+
+### Pré-requisitos
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Docker](https://www.docker.com/).
+
+## Rodando com Docker
+
+```bash
+# Clone este repositório
+$ git clone git@github.com:HigorAnjos/triviaApp.git
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd triviaApp
+
+# Criando imagem node
+$ docker build -t trivia .
+```
+
+Para as proximas vezes nao sera necessario criar a imagem novamente, apenas rodar o container.
+
+```bash
+# Rodando o container da imagem criada.
+$ docker run -i -t -p 3000:3000 trivia
+```
+
+A aplicação estara disponivel em ```http://localhost:3000/triviaApp```
+
+---
+
+## Docker Compose
 
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+[Git](https://git-scm.com), [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/install/).
 
 
-Você também vai precisar configurar o ambiente para desenvolvimento mobile no seu PC: [Configurando Ambiente React Native](https://react-native.rocketseat.dev/).
-
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
-
----
-
-### Rodando o Trivia
+## Rodando com o doker-compose
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/ARTHURPC03/WeatherApp
-
-# Acesse a pasta do projeto no terminal/cmd
-$ cd WeatherApp
-
-# Faça uma cópia de '.env.example' para '.env'
-# Coloque sua credencial da API de clima (Weather API)
-$ cp .env.example .env
-
-# Instale as dependências
-$ yarn
-
-# Se você for emular com o Android, execute este comando
-# Certifique-se de ter o emulador aberto
-$ yarn android
-
-# Se você for emular com ios, execute este comando
-$ yarn ios
+$ docker compose up
 ```
 
-## Rodando com Docker Compose
+Caso queira rodar sem travar seu termianl
+```bash
+# Clone este repositório
+$ docker compose up -d
+```
 
+## Removendo a imagem do Docker
+```bash
+# Excluindo a imagem criada pelo docker
+$ docker image rm -f trivia
+```
 
 ## Tecnologias
 
