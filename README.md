@@ -167,10 +167,23 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ---
 
-Trabalho desenvolvido na trybe com finalidade didatica, feito em grupo.
+## Contribuiçao
 
-[Gabriel Julio](https://github.com/GJTrybe)
-
+[Gabriel Julio](https://github.com/GJTrybe) |
 [Leonardo Mendonça](https://github.com/leobmend)
 
+---
+
+## GitHub Pages
+O projeto esta disponivel online no
 [Github Pages](https://higoranjos.github.io/triviaApp/)
+
+---
+
+# Autor
+
+<img alt="ARTHUR PC" title="ARTHUR PC" src="https://avatars.githubusercontent.com/u/38214470?v=4" height="100" width="100" />
+
+Made with 💜 by HIGORANJOS 👋
+
+[![LinkedIn Badge](https://img.shields.io/badge/-Higor_Anjos-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/higoranjos)](https://www.linkedin.com/in/higoranjos)
