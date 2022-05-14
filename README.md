@@ -154,9 +154,16 @@ $ docker image rm -f triviaapp_trivia
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- [Context API](https://pt-br.reactjs.org/docs/context.html)
+- [React](https://pt-br.reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [HTML](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
+- [CSS](https://www.w3.org/TR/CSS/#css)
 - [Eslint](https://eslint.org/)
-- [EditorConfig](https://editorconfig.org/)
+- [Java Script](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Editor Config](https://editorconfig.org/)
+
 
 <!-- - [TypeScript](https://www.typescriptlang.org/) -->
 <!-- - [React Native](https://reactnative.dev/) -->
