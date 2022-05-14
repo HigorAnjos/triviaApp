@@ -80,6 +80,9 @@ $ cd triviaApp
 
 # Criando imagem node
 $ docker build -t trivia .
+
+# Rodando o container da imagem criada.
+$ docker run -i -t -p 3000:3000 trivia
 ```
 
 Para as proximas vezes nao sera necessario criar a imagem novamente, apenas rodar o container.
@@ -90,6 +93,12 @@ $ docker run -i -t -p 3000:3000 trivia
 ```
 
 A aplicação estara disponivel em ```http://localhost:3000/triviaApp```
+
+### Removendo a imagem do Docker
+```bash
+# Excluindo a imagem criada pelo docker
+$ docker image rm -f trivia
+```
 
 ---
 
@@ -105,39 +114,55 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 ```bash
 # Clone este repositório
+$ docker compose up --build
+```
+Para roda outras vezes nao sera necessario contruir a imagem novamente, apenar roda o container com a imagem:
+
+```bash
+# Clone este repositório
 $ docker compose up
 ```
 
-Caso queira rodar sem travar seu termianl
+<!-- Caso queira rodar o container sem travar seu termianl:
 ```bash
 # Clone este repositório
 $ docker compose up -d
+``` -->
+A aplicação estara disponivel em ```http://localhost:3000/triviaApp```
+
+Parar o container
+```bash
+# Clone este repositório
+$ docker compose down
 ```
 
-## Removendo a imagem do Docker
+### Removendo a imagem do Docker
 ```bash
 # Excluindo a imagem criada pelo docker
-$ docker image rm -f trivia
+$ docker image rm -f triviaapp_trivia
 ```
+
+---
 
 ## Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [React Native](https://reactnative.dev/)
-- [Weather API](https://openweathermap.org/api)
 - [Context API](https://pt-br.reactjs.org/docs/context.html)
-- [React Native Geolocation Service](https://github.com/Agontuk/react-native-geolocation-service)
-- [React Navigation](https://reactnavigation.org/)
-- [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
-- [UnForm](https://unform.dev/)
-- [Yup](https://github.com/jquense/yup)
-- [Styled Components](https://styled-components.com/)
-- [Axios](https://github.com/axios/axios)
 - [Eslint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
 - [EditorConfig](https://editorconfig.org/)
+
+<!-- - [TypeScript](https://www.typescriptlang.org/) -->
+<!-- - [React Native](https://reactnative.dev/) -->
+<!-- - [Weather API](https://openweathermap.org/api) -->
+<!-- - [React Native Geolocation Service](https://github.com/Agontuk/react-native-geolocation-service) -->
+<!-- - [React Navigation](https://reactnavigation.org/) -->
+<!-- - [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons) -->
+<!-- - [UnForm](https://unform.dev/) -->
+<!-- - [Yup](https://github.com/jquense/yup) -->
+<!-- - [Styled Components](https://styled-components.com/) -->
+<!-- - [Axios](https://github.com/axios/axios) -->
+<!-- - [Prettier](https://prettier.io/) -->
 
 
 ---
