@@ -11,8 +11,10 @@
  <a href="#autor">Autor</a>
 </p>
 
-![](https://img.shields.io/github/license/HigorAnjos/triviaApp)
-![GitHub issues](https://img.shields.io/github/issues/higoranjos/triviaApp?style=social)
+[![](https://circleci.com/gh/HigorAnjos/triviaApp.svg?style=svg)](https://app.circleci.com/pipelines/github/HigorAnjos/triviaApp)
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/HigorAnjos/triviaApp?color=%2398cc04&style=flat-square">
+<img alt="GitHub" src="https://img.shields.io/github/license/HigorAnjos/triviaApp?color=%2398cc04&style=flat-square" width="78">
+
 ---
 
 ### Telas
@@ -22,8 +24,17 @@
   <!-- <img alt="WeatherApp" title="Persistência do tema e alerta de erro de cidade não encontrada" src="./github/WeatherAppThemePersistAndCityNotFound.gif" height="425" /> -->
 </h1>
 
+### Sonar Quality
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=bugs)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=security_rating)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=code_smells)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=ncloc)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=alert_status)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+
 ---
+
 ## Node
+
 
 ### Pré-requisitos
 
