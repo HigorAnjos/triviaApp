@@ -24,8 +24,19 @@
   <!-- <img alt="WeatherApp" title="Persistência do tema e alerta de erro de cidade não encontrada" src="./github/WeatherAppThemePersistAndCityNotFound.gif" height="425" /> -->
 </h1>
 
+### Sonar Quality
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=bugs)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=security_rating)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=code_smells)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=ncloc)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=alert_status)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=sqale_index)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
+
 ---
+
 ## Node
+
 
 ### Pré-requisitos
 
