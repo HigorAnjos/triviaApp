@@ -3,12 +3,13 @@
 <p align="center">Esse projeto é uma jogo de perguntas e respostas.</p>
 
 <p align="center">
- <a href="#features">Features</a> •
- <a href="#Node">Node</a> •
- <a href="#rodando-o-mobile">Rodando a aplicação</a> •
- <a href="#Docker">Docker</a> •
- <a href="#tecnologias">Tecnologias</a> •
- <a href="#autor">Autor</a>
+  <a href="#GitHub-Pages">GitHub-Pages</a> •
+  <a href="#Node">Node</a> •
+  <a href="#Docker">Docker</a> •
+  <a href="#Docker-Compose">Docker-Compose</a> •
+  <a href="#Tecnologias">Tecnologias</a> •
+  <a href="#Contribuicao">Contribuicao</a> •
+  <a href="#Autor">Autor</a>
 </p>
 
 [![](https://circleci.com/gh/HigorAnjos/triviaApp.svg?style=svg)](https://app.circleci.com/pipelines/github/HigorAnjos/triviaApp)
@@ -32,8 +33,14 @@
 
 ---
 
-## Node
+## GitHub-Pages
 
+O projeto esta disponivel online no
+[Github Pages](https://higoranjos.github.io/triviaApp/)
+
+---
+
+## Node
 
 ### Pré-requisitos
 
@@ -102,7 +109,7 @@ $ docker image rm -f trivia
 
 ---
 
-## Docker Compose
+## Docker-Compose
 
 ### Pré-requisitos
 
@@ -163,19 +170,12 @@ As seguintes ferramentas foram usadas na construção do projeto:
 <!-- - [Axios](https://github.com/axios/axios) -->
 <!-- - [Prettier](https://prettier.io/) -->
 
-
 ---
 
-## Contribuiçao
+## Contribuicao
 
 [Gabriel Julio](https://github.com/GJTrybe) |
 [Leonardo Mendonça](https://github.com/leobmend)
-
----
-
-## GitHub Pages
-O projeto esta disponivel online no
-[Github Pages](https://higoranjos.github.io/triviaApp/)
 
 ---
 
