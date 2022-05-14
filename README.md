@@ -141,7 +141,6 @@ $ docker compose down
 # Excluindo a imagem criada pelo docker
 $ docker image rm -f triviaapp_trivia
 ```
-
 ---
 
 ## Tecnologias
