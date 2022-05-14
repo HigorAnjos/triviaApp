@@ -30,7 +30,6 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=code_smells)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=HigorAnjos_triviaApp&metric=ncloc)](https://sonarcloud.io/dashboard?id=HigorAnjos_triviaApp)
 
-
 ---
 
 ## Node
@@ -41,39 +40,29 @@
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
 
-
-Você também vai precisar configurar o ambiente para desenvolvimento mobile no seu PC: [Configurando Ambiente React Native](https://react-native.rocketseat.dev/).
-
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 ---
 
-### Rodando o Trivia
+## Rodando com Node
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/ARTHURPC03/WeatherApp
+$ git clone git@github.com:HigorAnjos/triviaApp.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd WeatherApp
-
-# Faça uma cópia de '.env.example' para '.env'
-# Coloque sua credencial da API de clima (Weather API)
-$ cp .env.example .env
+$ cd triviaApp
 
 # Instale as dependências
-$ yarn
+$ npm install
 
-# Se você for emular com o Android, execute este comando
-# Certifique-se de ter o emulador aberto
-$ yarn android
-
-# Se você for emular com ios, execute este comando
-$ yarn ios
+# iniciar o projeto
+$ npm start
 ```
 
+Caso a pagina nao abra automaticamente, a aplicação estara disponivel em ```http://localhost:3000/```
 
-## Docker
+## Rodando com Docker -
 
 ### Pré-requisitos
 
@@ -111,6 +100,7 @@ $ yarn android
 $ yarn ios
 ```
 
+## Rodando com Docker Compose
 
 
 ## Tecnologias
