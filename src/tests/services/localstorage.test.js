@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 
+const getRanking = () => localStorage.getItem('ranking') || [];
 describe('Testing localStorage', () => {
   let getFunc;
   let setFunc;
@@ -29,11 +30,16 @@ describe('Testing localStorage', () => {
     });
   });
 
-  it('should call localStorage.getItem', () => {
-    getFunc.returns(undefined);
+  it('Local storage deve esta mocado', () => {
+    getFunc.returns('undefined');
     // Add your test related to function using "localStorage" here
-    expect(localStorage.getItem('ranking')).to.be.equal(undefined);
+    expect(localStorage.getItem('ranking')).to.be.equal('undefined');
     // Should assert or expect here to test the "getItem" is called or not
     // Jest
+  });
+
+  it('fn getRanking deve retornar um array vazio quando localstorage iniciado', () => {
+    getFunc.returns(undefined);
+    expect(getRanking()).to.be.an('array');
   });
 });
