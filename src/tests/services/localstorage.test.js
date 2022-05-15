@@ -3,6 +3,7 @@ import sinon from 'sinon';
 
 const getRanking = () => localStorage.getItem('ranking') || [];
 describe('Testing localStorage', () => {
+  // ref: https://gist.github.com/davidnguyen179/ee017fb1cf6659a920b40ec721498058
   let getFunc;
   let setFunc;
 
