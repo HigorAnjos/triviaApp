@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
+import { getRanking } from '../../services/localstorage';
 
-const getRanking = () => localStorage.getItem('ranking') || [];
 describe('Testing localStorage', () => {
   // ref: https://gist.github.com/davidnguyen179/ee017fb1cf6659a920b40ec721498058
   let getFunc;
@@ -40,7 +40,15 @@ describe('Testing localStorage', () => {
   });
 
   it('fn getRanking deve retornar um array vazio quando localstorage iniciado', () => {
-    getFunc.returns(undefined);
+    getFunc.returns(null);
     expect(getRanking()).to.be.an('array');
+  });
+
+  it('fn getRanking input json array retornar um array', () => {
+    const arrayJson = '[1, 2, 3]';
+    // eslint-disable-next-line no-magic-numbers
+    const expected = [1, 2, 3];
+    getFunc.returns(arrayJson);
+    expect(getRanking()).to.deep.equal(expected);
   });
 });
