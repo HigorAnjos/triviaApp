@@ -1,47 +1,39 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-// import { expect } from "chai";
+describe('Testing localStorage', () => {
+  let getFunc;
+  let setFunc;
 
-// import { getRanking } from '../../services/localstorage';
+  // Clone the original "localStorage"
+  const originalLocalStorage = window.localStorage;
 
-// sinon.stub(window.localStorage, 'getItem').returns('undefined');
-// console.log(localStorage.getItem('ranking'));
+  beforeEach(() => {
+    getFunc = sinon.stub();
+    setFunc = sinon.stub();
 
-describe('Funcao getRanking', () => {
-  // it('Deve retornar array vazio quando nao tem nada no localStorage', () => {
-  //   expect(localStorage.getItem('ranking')).to.be.equal('undefined');
-  // });
-
-  // it('coisa', () => {
-  //   // window.localStorage.setItem
-  //   const spy = sinon.spy(window.localStorage, 'setItem');
-
-  //   // You can use this in your assertions
-  //   spy.calledWith('ranking', 'undefined');
-
-  //   expect(localStorage.getItem('ranking')).to.be.equal('undefined');
-  //   // Reset localStorage.setItem method
-  //   spy.reset();
-  // });
-  it('Localstorage to be undefined', () => {
-    // moca sinon localstorage
-    // const spy = sinon.spy(window.localStorage, 'getItem');
-    // const spy = sinon.stub(localStorage, 'getItem').returns('undefined');
-    // sinon.stub(localStorage, 'getItem').returns('undefined');
-
-    // spy.alwaysCalledOn(window.localStorage);
-    // spy.alwaysCalledWith('ranking', 'undefined');
-
-    // expect(localStorage.getItem('ranking')).to.be.equal('undefined');
-    // Reset localStorage.setItem method
-    // spy.reset();
+    Object.defineProperty(window, 'localStorage', {
+      value: {
+        getItem: getFunc,
+        setItem: setFunc,
+      },
+      writable: true,
+    });
   });
 
-  // it('Jest localstorage', () => {
-  //   // jest moca localstorage
-  //   global.window.localStorage.getItem = jest.fn().mockReturnValue('undefined');
-  //   expect(localStorage.getItem('')).to.be.equal('undefined');
-  // });
-  // npm run jest -- --coverage
+  afterEach(() => {
+    // Revert the fake localStorage in "beforeEach" block
+    Object.defineProperty(window, 'localStorage', {
+      value: { ...originalLocalStorage },
+      writable: true,
+    });
+  });
+
+  it('should call localStorage.getItem', () => {
+    getFunc.returns(undefined);
+    // Add your test related to function using "localStorage" here
+    expect(localStorage.getItem('ranking')).to.be.equal(undefined);
+    // Should assert or expect here to test the "getItem" is called or not
+    // Jest
+  });
 });
