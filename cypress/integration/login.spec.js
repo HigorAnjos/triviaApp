@@ -2,11 +2,7 @@
 
 describe('Login', () => {
   it('should login', () => {
-    cy.visit('/triviaApp')
-    cy.get('#username').type('admin')
-    cy.get('#password').type('admin')
-    cy.get('#login-button').click()
-    cy.url().should('include', '/home')
+    cy.visit('http://localhost:3000/triviaApp')
   })
 });
 
