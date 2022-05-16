@@ -1,9 +1,9 @@
 /// <reference types="Cypress" />
 
 // Variables
-
 const USER_EMAIL = 'higorc.anjos@gmail.com';
 const USER_NAME = 'Higor';
+
 describe('Login', () => {
   it('Conseguir efetuar login', () => {
 
