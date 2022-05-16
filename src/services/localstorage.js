@@ -1,6 +1,7 @@
 import getGravatarUrl from './gravatar';
 
 export const getRanking = () => JSON.parse(localStorage.getItem('ranking')) || [];
+
 const setRanking = (ranking) => {
   const sortedRanking = [...ranking];
   sortedRanking.sort((playerA, playerB) => playerB.score - playerA.score);

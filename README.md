@@ -1,6 +1,6 @@
 <h1 align="center">Jogo Trivia</h1>
 
-<p align="center">Esse projeto é uma jogo de perguntas e respostas.</p>
+<p align="center">Esse projeto é um jogo de perguntas e respostas, onde você terá 30 's para responder um total de 5 perguntas. A pontuação depende do tempo e da dificuldade da pergunta. Ao final você conseguirá visualizar o ranking.</p>
 
 <p align="center">
   <a href="#GitHub-Pages">GitHub-Pages</a> •
@@ -187,8 +187,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ---
 
 # Autor
-
+<a href="https://github.com/HigorAnjos">
 <img alt="Higor Anjos" title="Higor Anjos" src="https://avatars.githubusercontent.com/u/38214470?v=4" height="100" width="100" />
+
+</a>
 
 Made with 💜 by Higor Anjos 👋
 
